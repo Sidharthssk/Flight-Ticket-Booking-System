@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-class Users {
+class Users extends JFrame {
 
-    String name;
+    String username;
     String email;
     String password;
     long phone_number;
@@ -12,8 +15,9 @@ class Users {
     String country;
 
     // Constructor for User
-    Users(String name, String email, String password, long phone_number, String gender, String age, String country) {
-        this.name = name;
+    Users(String username, String email, String password, long phone_number, String gender, String age,
+            String country) {
+        this.username = username;
         this.email = email;
         this.password = password;
         this.phone_number = phone_number;
@@ -26,74 +30,35 @@ class Users {
 
     }
 
-    static Users authentication() {
-        Scanner sc = new Scanner(System.in);
-        Users u = new Users();
-        int final_flag = 0;
-        while (final_flag == 0) {
-            System.out.println();
-            System.out.println("1. Login      2. SignUp");
-            // switch case for login and signup
-            switch (sc.nextInt()) {
-                case 1:
-                    System.out.println("Enter your email");
-                    String email1 = sc.next();
-                    System.out.println("Enter your password");
-                    String password1 = sc.next();
-                    int flag = 0;
+    static Users currentUser;
 
-                    // Takes out the user from the arraylist
+    static int authentication(int opt, Users user) {
 
-                    for (Users user : users) {
-                        if (user.email.equals(email1)) {
-                            flag = 1;
-                            u = user;
-                        }
+        switch (opt) {
+            case 1:
+                int flag = 0;
+                for (Users tempUser : users) {
+                    if (tempUser.email.equals(user.email)) {
+                        flag = 1;
+                        currentUser = tempUser;
                     }
+                }
+                if (flag == 0) {
+                    return 1;
+                }
+                if(user.email.equals(currentUser.email) && user.password.equals(currentUser.password)){
+                    return 0;
+                }
+                else{
+                    return -1;
+                }
 
-                    // check if email and password is correct
-                    if (flag == 0) {
-                        System.out.println("User doesn't exist. Please SignUp ");
-                    } 
-                    else {
-                        if (email1.equals(u.email) && password1.equals(u.password)) {
-                            System.out.println("Login Successful");
-                            final_flag = 1;
-                        } 
-                        else {
-                            System.out.println("Login Failed. Please check your email and password.");
-                        }
-                    }
-
-                    break;
-                case 2:
-                    System.out.println("Enter your name");
-                    String name = sc.next();
-                    System.out.println("Enter your email");
-                    String email = sc.next();
-                    System.out.println("Enter your password");
-                    String password = sc.next();
-                    System.out.println("Enter your phone number");
-                    long phone_number = sc.nextLong();
-                    System.out.println("Enter your gender");
-                    String gender = sc.next();
-                    System.out.println("Enter your age");
-                    String age = sc.next();
-                    System.out.println("Enter your country");
-                    String country = sc.next();
-                    // create new user
-                    Users user = new Users(name, email, password, phone_number, gender, age, country);
-                    // add user to arraylist
-                    users.add(user);
-                    System.out.println("SignUp Successful.");
-                    break;
-                default:
-                    System.out.println("Invalid Input");
-                    break;
-            }
+            case 2:
+                users.add(user);
+                return 0;
         }
-        return u;
-    } 
+        return 100;
+    }
 
     // ArrayList for storing user data
     static ArrayList<Users> users = new ArrayList<>();
