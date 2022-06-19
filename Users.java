@@ -1,3 +1,5 @@
+package ChatBot;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
@@ -9,13 +11,13 @@ class Users extends JFrame {
     String username;
     String email;
     String password;
-    long phone_number;
+    String phone_number;
     String gender;
     String age;
     String country;
 
     // Constructor for User
-    Users(String username, String email, String password, long phone_number, String gender, String age,
+    Users(String username, String email, String password, String phone_number, String gender, String age,
             String country) {
         this.username = username;
         this.email = email;

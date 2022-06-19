@@ -1,3 +1,5 @@
+package ChatBot;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -6,7 +8,8 @@ public class AuthenticationUI {
 
     public static void main(String[] args) {
         //Login login1 = new Login();
-        SignUp signup = new SignUp();
+         SignUp signup = new SignUp();
+        // WelcomeUI Welcome = new WelcomeUI();
     }
     
 }
@@ -65,7 +68,7 @@ class Login extends JFrame implements ActionListener{
 
 
 class SignUp extends Users implements ActionListener{
-    JLabel username,email,password,phone,gender,age,country;
+    JLabel username,email,password,phone,gender,age,country,success;
     JPasswordField pass;
     JTextField t1,t2,t3,t4,t5;
     JRadioButton male,female,others;
@@ -76,7 +79,7 @@ class SignUp extends Users implements ActionListener{
     SignUp(){
 
         setTitle("Sign Up");
-        setSize(700,500);
+        setSize(700,600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         c = getContentPane();
@@ -155,6 +158,10 @@ class SignUp extends Users implements ActionListener{
         submit.setBounds(20,400,100,30);
         c.add(submit);
         submit.addActionListener(this);
+        
+        success = new JLabel("",JLabel.CENTER);
+        success.setBounds(0,450,700,30);
+        c.add(success);
 
         setVisible(true);
     }
@@ -174,7 +181,14 @@ class SignUp extends Users implements ActionListener{
             gender = "Others";
         }
       
-        Users users = new Users(username.getText(),email.getText(),password1,Long.parseLong(phone.getText()),gender,age.getText(),country.getText());
+        Users users = new Users(username.getText(),email.getText(),password1,phone.getText(),gender,age.getText(),country.getText());
         
+        int result = users.authentication(2, this);
+        if(result == 0){
+            success.setText("Registration Successfull !!");
+        }
+        else{
+            success.setText("Registration Failed !!");
+        }
      }
 }
