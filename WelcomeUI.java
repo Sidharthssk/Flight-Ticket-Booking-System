@@ -1,7 +1,7 @@
-package ChatBot;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -49,7 +49,14 @@ class WelcomeUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        if(e.getSource() == login){
+            Login login = new Login();
+            dispose();
+        }
+        else if(e.getSource() == signup){
+            SignUp signup = new SignUp();
+            dispose();
+        }
 
     }
 

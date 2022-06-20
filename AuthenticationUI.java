@@ -1,73 +1,94 @@
-package ChatBot;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class AuthenticationUI {
 
-    public static void main(String[] args) {
-        //Login login1 = new Login();
-         SignUp signup = new SignUp();
-        // WelcomeUI Welcome = new WelcomeUI();
-    }
-    
-}
-
-class Login extends JFrame implements ActionListener{
+class Login extends Users implements ActionListener {
 
     Container c;
-    JLabel username,l2;
+    JLabel username, l2, successLabel;
     JTextField user;
     JPasswordField pass;
     JButton bn;
 
-    Login(){
-       
-       setSize(400,300);
-       setLocation(100,100);
-       setDefaultCloseOperation(EXIT_ON_CLOSE);
+    Login() {
 
-       c = getContentPane();
-       c.setLayout(null);
+        setSize(400, 300);
+        setLocation(100, 100);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-     username = new JLabel("Username : ");
-       l2 = new JLabel("Password : ");
+        c = getContentPane();
+        c.setLayout(null);
 
-     username.setBounds(10,50,100,20);
-       l2.setBounds(10,100,100,20);
+        username = new JLabel("Username : ");
+        l2 = new JLabel("Password : ");
 
-       c.add (username);
-       c.add(l2);
+        username.setBounds(10, 50, 100, 20);
+        l2.setBounds(10, 100, 100, 20);
 
-       user = new JTextField();
-       user.setBounds(120,50,120,20);
-       c.add(user);
+        c.add(username);
+        c.add(l2);
 
-       pass = new JPasswordField();
-       pass.setBounds(120,100,120,20);
-       c.add(pass);
+        user = new JTextField();
+        user.setBounds(120, 50, 120, 20);
+        c.add(user);
 
-       bn = new JButton("Login");
-       bn.setBounds(100,150,70,20);
-       c.add(bn);
-       bn.addActionListener(this);
+        pass = new JPasswordField();
+        pass.setBounds(120, 100, 120, 20);
+        c.add(pass);
 
-       setVisible(true);
+        bn = new JButton("Login");
+        bn.setBounds(100, 150, 70, 20);
+        c.add(bn);
+        bn.addActionListener(this);
+
+        successLabel = new JLabel("", JLabel.CENTER);
+        successLabel.setBounds(0, 200, 700, 30);
+        c.add(successLabel);
+
+        setVisible(true);
 
     }
 
-    public void actionPerformed(ActionEvent e){
-       String username = user.getText();
-       char [] password = pass.getPassword();
+    public void actionPerformed(ActionEvent e) {
+        String username1 = user.getText();
+        String password = String.valueOf(pass.getPassword());
 
-       
+        Users user1 = new Users(username1, password);
+        int result1 = user1.authentication(1, this);
+
+        if (result1 == 0) {
+            successLabel.setText("Login Successfull !!");
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+            dispose();
+        } else if (result1 == 1) {
+            successLabel.setText("User does not exist !!  Please Signup");
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+            SignUp signUp = new SignUp();
+            dispose();
+        } else if (result1 == -1) {
+            successLabel.setText("Password is incorrect !! Please try again");
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+            Login l = new Login();
+        }
+
     }
-
 }
 
-
-class SignUp extends Users implements ActionListener{
+ class SignUp extends Users implements ActionListener{
     JLabel username,email,password,phone,gender,age,country,success;
     JPasswordField pass;
     JTextField t1,t2,t3,t4,t5;
@@ -186,6 +207,14 @@ class SignUp extends Users implements ActionListener{
         int result = users.authentication(2, this);
         if(result == 0){
             success.setText("Registration Successfull !!");
+            try{
+                Thread.sleep(2000);
+            }
+            catch(Exception e1){
+                e1.printStackTrace();
+            }
+            Login login = new Login();
+            dispose();
         }
         else{
             success.setText("Registration Failed !!");

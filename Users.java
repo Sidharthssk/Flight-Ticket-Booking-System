@@ -1,10 +1,7 @@
-package ChatBot;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 
 class Users extends JFrame {
 
@@ -30,6 +27,11 @@ class Users extends JFrame {
 
     Users() {
 
+    }
+
+    Users(String username,String password){
+        this.username = username;
+        this.password = password;
     }
 
     static Users currentUser;
