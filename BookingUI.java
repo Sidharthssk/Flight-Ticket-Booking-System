@@ -27,37 +27,46 @@ public class BookingUI extends JFrame implements ActionListener {
         c = getContentPane();
         c.setLayout(null);
 
+        back = new JButton("Back");
+        back.setBounds(5, 5, 70, 25);
+        c.add(back);
+        back.addActionListener(this);
+
         booking = new JLabel("Booking", JLabel.CENTER);
-        booking.setBounds(0, 0, 1000, 50);
+        booking.setBounds(0, 40, 1000, 50);
         booking.setFont(new Font("Arial", Font.BOLD, 30));
         c.add(booking);
 
         lbl_date = new JLabel("Date of Journey", JLabel.LEFT);
-        lbl_date.setBounds(50, 100, 200, 30);
+        lbl_date.setBounds(50, 130, 200, 30);
         lbl_date.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(lbl_date);
 
         cb_year = new JComboBox(year);
-        cb_year.setBounds(300, 100, 100, 30);
+        cb_year.setBounds(300, 130, 100, 30);
         cb_year.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_year);
 
         cb_month = new JComboBox(month);
-        cb_month.setBounds(400, 100, 150, 30);
+        cb_month.setBounds(410, 130, 150, 30);
         cb_month.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_month);
 
         cb_day = new JComboBox(day);
-        cb_day.setBounds(500, 100, 100, 30);
+        cb_day.setBounds(570, 130, 50, 30);
         cb_day.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_day);
 
         setVisible(true);
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+        if(e.getSource()==back) {
+            MainUI main = new MainUI();
+            dispose();
+            return;
+        }
 
     }
 }

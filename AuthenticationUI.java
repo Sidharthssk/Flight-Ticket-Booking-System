@@ -10,7 +10,7 @@ class Login extends Users implements ActionListener {
     JLabel username, l2, successLabel;
     JTextField user;
     JPasswordField pass;
-    JButton bn;
+    JButton back, login;
 
     Login() {
 
@@ -20,6 +20,10 @@ class Login extends Users implements ActionListener {
 
         c = getContentPane();
         c.setLayout(null);
+
+        back = new JButton("Back");
+        back.setBounds(5, 5, 70, 25);
+        c.add(back);
 
         username = new JLabel("Username : ");
         l2 = new JLabel("Password : ");
@@ -38,10 +42,10 @@ class Login extends Users implements ActionListener {
         pass.setBounds(120, 100, 120, 20);
         c.add(pass);
 
-        bn = new JButton("Login");
-        bn.setBounds(100, 150, 70, 20);
-        c.add(bn);
-        bn.addActionListener(this);
+        login = new JButton("Login");
+        login.setBounds(100, 150, 70, 20);
+        c.add(login);
+        login.addActionListener(this);
 
         successLabel = new JLabel("", JLabel.CENTER);
         successLabel.setBounds(0, 200, 700, 30);
@@ -93,7 +97,7 @@ class Login extends Users implements ActionListener {
     JPasswordField pass;
     JTextField t1,t2,t3,t4,t5;
     JRadioButton male,female,others;
-    JButton submit;
+    JButton back, submit;
     Container c;
     ButtonGroup gen = new ButtonGroup();
 
@@ -105,6 +109,10 @@ class Login extends Users implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         c = getContentPane();
         c.setLayout(null);
+
+        back = new JButton("Back");
+        back.setBounds(5, 5, 70, 25);
+        c.add(back);
 
         username = new JLabel("Username : ");
         username.setBounds(20,50,100,20);
