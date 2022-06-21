@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
@@ -42,7 +41,7 @@ class Users extends JFrame {
             case 1:
                 int flag = 0;
                 for (Users tempUser : users) {
-                    if (tempUser.email.equals(user.email)) {
+                    if (tempUser.username.equals(user.username)) {
                         flag = 1;
                         currentUser = tempUser;
                     }
@@ -50,7 +49,7 @@ class Users extends JFrame {
                 if (flag == 0) {
                     return 1;
                 }
-                if(user.email.equals(currentUser.email) && user.password.equals(currentUser.password)){
+                if(user.username.equals(currentUser.username) && user.password.equals(currentUser.password)){
                     return 0;
                 }
                 else{
