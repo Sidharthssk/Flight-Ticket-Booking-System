@@ -93,7 +93,7 @@ class Login extends Users implements ActionListener {
     JPasswordField pass;
     JTextField t1,t2,t3,t4,t5;
     JRadioButton male,female,others;
-    JButton submit;
+    JButton submit,back;
     Container c;
     ButtonGroup gen = new ButtonGroup();
 
@@ -204,17 +204,9 @@ class Login extends Users implements ActionListener {
       
         Users users = new Users(username.getText(),email.getText(),password1,phone.getText(),gender,age.getText(),country.getText());
         
-        int result = users.authentication(2, this);
+        int result = authentication(2, users);
         if(result == 0){
             success.setText("Registration Successfull !!");
-            try{
-                Thread.sleep(2000);
-            }
-            catch(Exception e1){
-                e1.printStackTrace();
-            }
-            Login login = new Login();
-            dispose();
         }
         else{
             success.setText("Registration Failed !!");
