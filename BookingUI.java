@@ -46,75 +46,65 @@ public class BookingUI extends JFrame implements ActionListener {
         c.add(booking);
 
         lbl_date = new JLabel("Date of Journey", JLabel.LEFT);
-        lbl_date.setBounds(50, 130, 200, 30);
+        lbl_date.setBounds(175, 130, 200, 30);
         lbl_date.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(lbl_date);
 
         cb_year = new JComboBox(year);
-        cb_year.setBounds(300, 130, 100, 30);
+        cb_year.setBounds(425, 130, 100, 30);
         cb_year.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_year);
         cb_year.addActionListener(this);
         
 
         cb_month = new JComboBox(month);
-        cb_month.setBounds(410, 130, 150, 30);
+        cb_month.setBounds(535, 130, 150, 30);
         cb_month.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_month);
         cb_month.addActionListener(this);
         
         cb_day = new JComboBox(day);
-        cb_day.setBounds(570, 130, 80, 30);
+        cb_day.setBounds(695, 130, 80, 30);
         cb_day.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_day);
         cb_day.addActionListener(this);
 
         lbl_depart = new JLabel("Departure", JLabel.LEFT);
-        lbl_depart.setBounds(50, 170, 200, 30);
+        lbl_depart.setBounds(175, 180, 200, 30);
         lbl_depart.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(lbl_depart);
 
         cb_depart = new JComboBox(depart);
-        cb_depart.setBounds(300, 170, 340, 30);
+        cb_depart.setBounds(425, 180, 350, 30);
         cb_depart.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_depart);
 
         lbl_dest = new JLabel("Destination", JLabel.LEFT);
-        lbl_dest.setBounds(50, 210, 200, 30);
+        lbl_dest.setBounds(175, 230, 200, 30);
         lbl_dest.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(lbl_dest);
 
         cb_dest = new JComboBox(dest);
-        cb_dest.setBounds(300, 210, 340, 30);
+        cb_dest.setBounds(425, 230, 350, 30);
         cb_dest.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_dest);
 
-        lbl_class = new JLabel("Class", JLabel.LEFT);
-        lbl_class.setBounds(50, 250, 200, 30);
-        lbl_class.setFont(new Font("Arial", Font.BOLD, 20));
-        c.add(lbl_class);
-
-        cb_class = new JComboBox(class1);
-        cb_class.setBounds(300, 250, 340, 30);
-        cb_class.setFont(new Font("Arial", Font.BOLD, 20));
-        c.add(cb_class);
-
         lbl_number = new JLabel("Number of Tickets", JLabel.LEFT);
-        lbl_number.setBounds(50, 290, 200, 30);
+        lbl_number.setBounds(175, 280, 200, 30);
         lbl_number.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(lbl_number);
 
         cb_number = new JComboBox(number);
-        cb_number.setBounds(300, 290, 340, 30);
+        cb_number.setBounds(425, 280, 350, 30);
         cb_number.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_number);
 
         cancel = new JButton("Cancel");
-        cancel.setBounds(50, 400, 100, 30);
+        cancel.setBounds(390, 350, 100, 30);
         c.add(cancel);
 
         ok = new JButton("OK");
-        ok.setBounds(200, 400, 100, 30);
+        ok.setBounds(500, 350, 100, 30);
         c.add(ok);
 
         setVisible(true);
