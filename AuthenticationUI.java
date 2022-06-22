@@ -10,7 +10,7 @@ class Login extends Users implements ActionListener {
     JLabel username, l2, successLabel;
     JTextField user;
     JPasswordField pass;
-    JButton bn;
+    JButton bn,ok;
 
     Login() {
 
@@ -45,7 +45,7 @@ class Login extends Users implements ActionListener {
 
         successLabel = new JLabel("", JLabel.CENTER);
         successLabel.setBounds(0, 200, 700, 30);
-        c.add(successLabel);
+        c.add(successLabel);   
 
         setVisible(true);
 
@@ -60,28 +60,14 @@ class Login extends Users implements ActionListener {
 
         if (result1 == 0) {
             successLabel.setText("Login Successfull !!");
-            try {
-                Thread.sleep(2000);
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
+            Login l = new Login();
             dispose();
         } else if (result1 == 1) {
             successLabel.setText("User does not exist !!  Please Signup");
-            try {
-                Thread.sleep(2000);
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
             SignUp signUp = new SignUp();
             dispose();
         } else if (result1 == -1) {
             successLabel.setText("Password is incorrect !! Please try again");
-            try {
-                Thread.sleep(2000);
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
             Login l = new Login();
         }
 
