@@ -9,13 +9,13 @@ import java.awt.event.*;
 public class BookingUI extends JFrame implements ActionListener {
 
     String[] day = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16",
-            "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
+            "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28"};
     String[] month = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
             "November", "December" };
     String[] year = { "2022", "2023"};
-    String[] depart = {"Kochi", "Trivandrum", "Kozhikode"};
-    String[] dest = {"New York", "New Jersey", "London"};
-    String[] class1 = {"Economy", "Business", "First Class"};
+    String[] depart = {"Cochin", "Trivandrum", "Kozhikode","Mumbai","NewDelhi"};
+    String[] dest = {"Dammam", "Riyadh", "Qatar","Kuwait","Dubai"};
+    String[] class1 = {"Economy", "Business"};
     String[] number = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
 
     JLabel booking, lbl_date, lbl_depart, lbl_dest, lbl_class, lbl_number;
@@ -122,6 +122,24 @@ public class BookingUI extends JFrame implements ActionListener {
         }
         if(e.getSource() == cb_month){
             selected_month = cb_month.getSelectedItem().toString();
+            if(selected_month.equals("January")  || selected_month.equals("March") || selected_month.equals("May") || selected_month.equals("July") || selected_month.equals("August") || selected_month.equals("October") || selected_month.equals("December")){
+                cb_day.removeAllItems();
+                for(int i=1;i<=31;i++){
+                    cb_day.addItem(i);
+                }
+            }
+            else if(selected_month.equals("February")){
+                cb_day.removeAllItems();
+                for(int i=1;i<=28;i++){
+                    cb_day.addItem(i);
+                }
+            }
+            else{
+                cb_day.removeAllItems();
+                for(int i=1;i<=30;i++){
+                    cb_day.addItem(i);
+                }
+            }
         }
         if(e.getSource() == cb_day){
             selected_date = cb_day.getSelectedItem().toString();
