@@ -8,23 +8,23 @@ import java.awt.event.*;
 
 public class BookingUI extends JFrame implements ActionListener {
 
-    String[] day = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16",
+    String[] day = { "day","1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16",
             "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28"};
-    String[] month = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+    String[] month = { "month","January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
             "November", "December" };
-    String[] year = { "2022", "2023"};
-    String[] depart = {"Cochin", "Trivandrum", "Kozhikode","Mumbai","NewDelhi"};
-    String[] dest = {"Dammam", "Riyadh", "Qatar","Kuwait","Dubai"};
-    String[] class1 = {"Economy", "Business"};
-    String[] number = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+    String[] year = { "year","2022", "2023"};
+    String[] depart = {"select","Cochin", "Trivandrum", "Kozhikode","Mumbai","NewDelhi"};
+    String[] dest = {"select","Dammam", "Riyadh", "Qatar","Kuwait","Dubai"};
+    String[] class1 = {"select","Economy", "Business"};
+    String[] number = {"select","1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
 
     JLabel booking, lbl_date, lbl_depart, lbl_dest, lbl_class, lbl_number;
-    JButton back, destination, flight, ok, cancel;
+    JButton back, destination,ok, cancel;
     JComboBox cb_day, cb_month, cb_year, cb_depart, cb_dest, cb_flight, cb_class, cb_number;
 
     Container c;
 
-    static String selected_date,selected_month,selected_year;
+    static String selected_date,selected_month,selected_year,selected_dest,selected_depart;
 
     BookingUI() {
 
@@ -64,7 +64,7 @@ public class BookingUI extends JFrame implements ActionListener {
         cb_month.addActionListener(this);
         
         cb_day = new JComboBox(day);
-        cb_day.setBounds(695, 130, 80, 30);
+        cb_day.setBounds(695, 130, 100, 30);
         cb_day.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_day);
         cb_day.addActionListener(this);
@@ -75,9 +75,10 @@ public class BookingUI extends JFrame implements ActionListener {
         c.add(lbl_depart);
 
         cb_depart = new JComboBox(depart);
-        cb_depart.setBounds(425, 180, 350, 30);
+        cb_depart.setBounds(425, 180, 370, 30);
         cb_depart.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_depart);
+        cb_depart.addActionListener(this);
 
         lbl_dest = new JLabel("Destination", JLabel.LEFT);
         lbl_dest.setBounds(175, 230, 200, 30);
@@ -85,9 +86,10 @@ public class BookingUI extends JFrame implements ActionListener {
         c.add(lbl_dest);
 
         cb_dest = new JComboBox(dest);
-        cb_dest.setBounds(425, 230, 350, 30);
+        cb_dest.setBounds(425, 230, 370, 30);
         cb_dest.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_dest);
+        cb_dest.addActionListener(this);
 
         lbl_number = new JLabel("Number of Tickets", JLabel.LEFT);
         lbl_number.setBounds(175, 280, 200, 30);
@@ -95,17 +97,20 @@ public class BookingUI extends JFrame implements ActionListener {
         c.add(lbl_number);
 
         cb_number = new JComboBox(number);
-        cb_number.setBounds(425, 280, 350, 30);
+        cb_number.setBounds(425, 280, 370, 30);
         cb_number.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_number);
+        cb_number.addActionListener(this);
 
         cancel = new JButton("Cancel");
         cancel.setBounds(390, 350, 100, 30);
         c.add(cancel);
+        cancel.addActionListener(this);
 
         ok = new JButton("OK");
         ok.setBounds(500, 350, 100, 30);
         c.add(ok);
+        ok.addActionListener(this);
 
         setVisible(true);
     }
@@ -146,15 +151,11 @@ public class BookingUI extends JFrame implements ActionListener {
         }
 
         if(e.getSource() == cb_depart){
-            String selected_depart = cb_depart.getSelectedItem().toString();
+            selected_depart = cb_depart.getSelectedItem().toString();
         }
 
         if(e.getSource() == cb_dest){
-            String selected_dest = cb_dest.getSelectedItem().toString();
-        }
-
-        if(e.getSource() == cb_flight){
-            String selected_flight = cb_flight.getSelectedItem().toString();
+            selected_dest = cb_dest.getSelectedItem().toString();
         }
 
         if(e.getSource() == cb_class){
@@ -166,7 +167,7 @@ public class BookingUI extends JFrame implements ActionListener {
         }
 
         if(e.getSource() == ok){
-            BookingUI booking = new BookingUI();
+            new FlightShowingUI();
             dispose();
             return;
         }

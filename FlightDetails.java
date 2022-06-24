@@ -17,6 +17,8 @@ public class FlightDetails {
     int economyclass_ticket_fare;
     int businessclass_ticket_fare;
 
+    FlightDetails(){}
+
     FlightDetails(String name,String departure_airport,String arrival_airport,int departureTime,int arrivalTime,int businessclass_seats,int economyclass_seats,int economyclass_ticket_fare,int businessclass_ticket_fare){
         this.name=name;
         this.departureTime=departureTime;
@@ -42,13 +44,13 @@ public class FlightDetails {
     static void addFlights(){
         for(int i = 0;i<10;i++ ){
             int departureTime = generateRandomNumber(0,19);
-            int arrivalTime = generateRandomNumber(departureTime,2);
+            int arrivalTime = generateRandomNumber(departureTime,23);
             while((arrivalTime-departureTime)<=4){
                 arrivalTime = generateRandomNumber(departureTime, 23);
             }
             int economyclass_ticket_fare = generateRandomNumber(10000,100000);
             int businessclass_ticket_fare = generateRandomNumber(economyclass_ticket_fare+20000,150000);
-            flightlist.add(new FlightDetails(flightName[generateRandomNumber(0, 4)], departure[generateRandomNumber(0, 4)], destination[generateRandomNumber(0, 4)],departureTime,arrivalTime,generateRandomNumber(10, 30), generateRandomNumber(150, 200), economyclass_ticket_fare, businessclass_ticket_fare));
+            flightlist.add(new FlightDetails(flightName[generateRandomNumber(0, 4)], BookingUI.selected_depart, BookingUI.selected_dest,departureTime,arrivalTime,generateRandomNumber(10, 30), generateRandomNumber(150, 200), economyclass_ticket_fare, businessclass_ticket_fare));
         }
     }
 }

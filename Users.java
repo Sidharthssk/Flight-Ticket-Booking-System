@@ -33,7 +33,8 @@ class Users extends JFrame {
         this.password = password;
     }
 
-    static Users currentUser;
+    //for testing change at last
+    static Users currentUser = new Users("ABC","ABC");
 
     static int authentication(int opt, Users user) {
 
