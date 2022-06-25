@@ -11,6 +11,7 @@ class Users extends JFrame {
     String gender;
     String age;
     String country;
+    String relation;
 
     // Constructor for User
     Users(String username, String email, String password, String phone_number, String gender, String age,
@@ -34,10 +35,11 @@ class Users extends JFrame {
     }
 
     //temporary constructor last kalayanam
-    Users(String username, String gender, String age){
+    Users(String username, String gender, String age, String relation){
         this.username = username;
         this.gender = gender;
         this.age = age;
+        this.relation = relation;
     }
 
     //for testing change at last
