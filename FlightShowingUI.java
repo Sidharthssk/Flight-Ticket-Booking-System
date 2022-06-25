@@ -15,6 +15,7 @@ public class FlightShowingUI extends JFrame implements ListSelectionListener{
 
     JTable table;
     JRadioButton business_class, economy_class;
+    Container c;
 
     FlightShowingUI(){
         setTitle("Flight details");

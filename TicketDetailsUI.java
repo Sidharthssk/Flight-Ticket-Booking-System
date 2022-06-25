@@ -6,7 +6,7 @@ class TicketDetailsUI extends JFrame implements ActionListener {
 
     Container c;
     JButton back, cancel, confirm;
-    JRadioButton male, female, others;
+    JRadioButton bClass, eClass;
     String[] relation = { "Father", "Mother", "Child", "Others" };
     String[] gender = { "Male", "Female", "Others" };
     JComboBox<String> cb_relation;
@@ -104,13 +104,28 @@ class TicketDetailsUI extends JFrame implements ActionListener {
 
         }
 
+        eClass = new JRadioButton("Economy Class");
+        eClass.setBounds(240, y_axis + 100, 200, 30);
+        eClass.setFont(new Font("Arial", Font.PLAIN, 20));
+        c.add(eClass);
+
+        bClass = new JRadioButton("Business Class");
+        bClass.setBounds(450, y_axis + 100, 200, 30);
+        bClass.setFont(new Font("Arial", Font.PLAIN, 20));
+        c.add(bClass);
+
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(eClass);
+        bg.add(bClass);
+        eClass.setSelected(true);
+
         cancel = new JButton("Cancel");
-        cancel.setBounds(250, 600, 90, 30);
+        cancel.setBounds(250, y_axis+200, 90, 30);
         cancel.addActionListener(this);
         c.add(cancel);
 
         confirm = new JButton("Confirm");
-        confirm.setBounds(450, 600, 90, 30);
+        confirm.setBounds(450, y_axis+200, 90, 30);
         confirm.setBackground(Color.BLUE);
         confirm.addActionListener(this);
         c.add(confirm);
@@ -123,10 +138,12 @@ class TicketDetailsUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if (e.getSource() == confirm) {
-            Ticket.additional_users = new Users[Integer.parseInt(BookingUI.selected_number)];
+            Users []additional_users = new Users[Integer.parseInt(BookingUI.selected_number)];
             for (int i = 0; i < Integer.parseInt(BookingUI.selected_number); i++) {
-                Ticket.additional_users[i] = new Users(passName[i].getText(),passGender[i].getSelectedItem().toString(),passAge[i].getText(),passRelation[i].getSelectedItem().toString());
+                additional_users[i] = new Users(passName[i].getText(),passGender[i].getSelectedItem().toString(),passAge[i].getText(),passRelation[i].getSelectedItem().toString());
             }
+
+            //Ticket t = new Ticket(Users.currentUser.username,BookingUI.selected_depart,BookingUI.selected_dest,BookingUI.selectedDate(),FlightShowingUI.selectedFlight.departureTime,FlightShowingUI.selectedFlight.arrivalTime,);
         }
     }
 }

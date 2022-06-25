@@ -34,7 +34,6 @@ class Users extends JFrame {
         this.password = password;
     }
 
-    //temporary constructor last kalayanam
     Users(String username, String gender, String age, String relation){
         this.username = username;
         this.gender = gender;
@@ -43,7 +42,7 @@ class Users extends JFrame {
     }
 
     //for testing change at last
-    static Users currentUser = new Users("Raghavan","male","69");
+    static Users currentUser = new Users("Raghavan","male");
 
     static int authentication(int opt, Users user) {
 
