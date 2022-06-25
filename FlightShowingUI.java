@@ -72,5 +72,6 @@ public class FlightShowingUI extends JFrame implements ListSelectionListener{
             selectedFlight.businessclass_ticket_fare = Integer.parseInt((String)table.getValueAt(table.getSelectedRow(), 7));
             selectedFlight.economyclass_ticket_fare = Integer.parseInt((String)table.getValueAt(table.getSelectedRow(), 8));
             dispose();
+            new TicketDetailsUI();
     }
 }
