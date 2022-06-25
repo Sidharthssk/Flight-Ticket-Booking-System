@@ -16,7 +16,7 @@ public class BookingUI extends JFrame implements ActionListener {
     String[] depart = {"select","Cochin", "Trivandrum", "Kozhikode","Mumbai","NewDelhi"};
     String[] dest = {"select","Dammam", "Riyadh", "Qatar","Kuwait","Dubai"};
     String[] class1 = {"select","Economy", "Business"};
-    String[] number = {"select","1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+    String[] number = {"select","1", "2", "3", "4", "5", "6"};
 
     JLabel booking, lbl_date, lbl_depart, lbl_dest, lbl_class, lbl_number;
     JButton back, destination,ok, cancel;
@@ -24,7 +24,7 @@ public class BookingUI extends JFrame implements ActionListener {
 
     Container c;
 
-    static String selected_date,selected_month,selected_year,selected_dest,selected_depart;
+    static String selected_date,selected_month,selected_year,selected_dest,selected_depart,selected_number="4";
 
     BookingUI() {
 
@@ -163,7 +163,7 @@ public class BookingUI extends JFrame implements ActionListener {
         }
 
         if(e.getSource() == cb_number){
-            String selected_number = cb_number.getSelectedItem().toString();
+            selected_number = cb_number.getSelectedItem().toString();
         }
 
         if(e.getSource() == ok){

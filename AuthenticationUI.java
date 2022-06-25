@@ -1,8 +1,6 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
 
 class Login extends Users implements ActionListener {
 
