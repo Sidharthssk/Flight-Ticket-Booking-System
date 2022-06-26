@@ -42,6 +42,9 @@ public class FlightDetails {
     static String [] departure = {"Cochin", "Trivandrum", "Kozhikode","Mumbai","NewDelhi"};
 
     static void addFlights(){
+        if(flightlist.size()!=0){
+            flightlist.clear();
+        }
         for(int i = 0;i<10;i++ ){
             int departureTime = generateRandomNumber(0,19);
             int arrivalTime = generateRandomNumber(departureTime,23);
@@ -50,10 +53,8 @@ public class FlightDetails {
             }
             int economyclass_ticket_fare = generateRandomNumber(10000,100000);
             int businessclass_ticket_fare = generateRandomNumber(economyclass_ticket_fare+20000,150000);
+            
             flightlist.add(new FlightDetails(flightName[generateRandomNumber(0, 4)], BookingUI.selected_depart, BookingUI.selected_dest,departureTime,arrivalTime,generateRandomNumber(10, 30), generateRandomNumber(150, 200), economyclass_ticket_fare, businessclass_ticket_fare));
         }
     }
 }
-
-
-

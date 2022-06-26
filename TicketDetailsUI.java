@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class TicketDetailsUI extends JFrame implements ActionListener {
+class TicketDetailsUI extends ChatBot implements ActionListener {
 
     Container c;
     JButton back, cancel, confirm;
@@ -126,7 +126,6 @@ class TicketDetailsUI extends JFrame implements ActionListener {
 
         confirm = new JButton("Confirm");
         confirm.setBounds(450, y_axis+200, 90, 30);
-        confirm.setBackground(Color.BLUE);
         confirm.addActionListener(this);
         c.add(confirm);
 
@@ -137,13 +136,24 @@ class TicketDetailsUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+
+        if(e.getSource() == back){
+            //Remove everything from the FlightShowingUI.c
+            dispose();
+            new BookingUI();
+        }
+
         if (e.getSource() == confirm) {
             Users []additional_users = new Users[Integer.parseInt(BookingUI.selected_number)];
             for (int i = 0; i < Integer.parseInt(BookingUI.selected_number); i++) {
                 additional_users[i] = new Users(passName[i].getText(),passGender[i].getSelectedItem().toString(),passAge[i].getText(),passRelation[i].getSelectedItem().toString());
             }
 
-            //Ticket t = new Ticket(Users.currentUser.username,BookingUI.selected_depart,BookingUI.selected_dest,BookingUI.selectedDate(),FlightShowingUI.selectedFlight.departureTime,FlightShowingUI.selectedFlight.arrivalTime,);
+            Ticket t = new Ticket(Users.currentUser.username,BookingUI.selected_depart,BookingUI.selected_dest,BookingUI.selectedDate(),Integer.toString(FlightShowingUI.selectedFlight.departureTime),Integer.toString(FlightShowingUI.selectedFlight.arrivalTime),additional_users);
+            ticketQueue.add(BookingUI.selectedDate(),t);
+            ticketQueue.printList();
         }
+
+
     }
 }
