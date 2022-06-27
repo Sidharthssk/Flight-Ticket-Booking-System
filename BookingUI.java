@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.util.HashMap;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
@@ -206,18 +207,21 @@ public class BookingUI extends JFrame implements ActionListener {
         
     }
 
-    static Date selectedDate(){
+    static LocalDate selectedDate(){
 
-        Date date = new Date();
+        // Date date = new Date();
         
-        try {
-            date = new SimpleDateFormat("dd/MM/yyyy").parse(selected_date+"/"+month_number.get(selected_month)+"/"+selected_year);
-            System.out.println(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        // try {
+        //     date = new SimpleDateFormat("dd/MM/yyyy").parse(selected_date+"/"+month_number.get(selected_month)+"/"+selected_year);
+        //     System.out.println(date);
+        // } catch (ParseException e) {
+        //     e.printStackTrace();
+        // }
 
-        return date;
+        // return date;
+
+        LocalDate localDate = LocalDate.of(Integer.parseInt(selected_year), Integer.parseInt(month_number.get(selected_month)), Integer.parseInt(selected_date));
+        return localDate;
     }
     
 }

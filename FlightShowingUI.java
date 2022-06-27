@@ -4,6 +4,7 @@ import java.awt.event.*;
 
 class FlightShowingUI extends JFrame implements ActionListener {
 
+
     static int generateRandomNumber(int min, int max) {
         return (int) (Math.random() * (max - min + 1) + min);
     }

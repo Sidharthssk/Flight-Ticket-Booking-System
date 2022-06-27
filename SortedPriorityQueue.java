@@ -1,13 +1,12 @@
-import java.util.Date;
-
+import java.time.LocalDate;
 public class SortedPriorityQueue {
 
     class Node {
-        Date priority;
+        LocalDate priority;
         Ticket data;
         Node next;
 
-        Node(Date priority, Ticket data) {
+        Node(LocalDate priority, Ticket data) {
             this.priority = priority;
             this.data = data;
             this.next = null;
@@ -18,14 +17,14 @@ public class SortedPriorityQueue {
     Node tail = null;
     int size = 0;
 
-    void add(Date priority, Ticket data) {
+    void add(LocalDate priority, Ticket data) {
         Node newNode = new Node(priority, data);
 
         if (head == null) {
             head = newNode;
             tail = newNode;
             size++;
-        } else if (newNode.priority.before(head.priority)) {
+        } else if (newNode.priority.isBefore(head.priority)) {
             newNode.next = head;
             head = newNode;
             size++;
@@ -36,7 +35,7 @@ public class SortedPriorityQueue {
             while (currentNode != tail) {
                 currentNode = temp;
                 temp = temp.next;
-                if (temp != null && temp.priority.after(currentNode.priority)) {
+                if (temp != null && temp.priority.isAfter(newNode.priority)) {
                     newNode.next = temp;
                     currentNode.next = newNode;
                     size++;
