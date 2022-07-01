@@ -51,14 +51,17 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
         userAge.setFont(new Font("Arial", Font.PLAIN, 20));
         c.add(userAge);
 
-        JLabel enterDetails = new JLabel("Enter Passenger Details:", JLabel.LEFT);
+        int y_axis = 150;
+
+        if(Integer.parseInt(BookingUI.selected_number)!=1){
+            JLabel enterDetails = new JLabel("Enter Passenger Details:", JLabel.LEFT);
         enterDetails.setBounds(50, 150, 400, 30);
         enterDetails.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(enterDetails);
 
-        int y_axis = 150;
+        
 
-        for (int i = 0; i < Integer.parseInt(BookingUI.selected_number); i++) {
+        for (int i = 1; i < Integer.parseInt(BookingUI.selected_number); i++) {
             y_axis += 40;
             JLabel l1 = new JLabel("Passenger " + Integer.toString(i + 1), JLabel.LEFT);
             l1.setBounds(50, y_axis, 200, 30);
@@ -103,6 +106,9 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
             c.add(passRelation[i]);
 
         }
+        }
+
+        
 
         eClass = new JRadioButton("Economy Class");
         eClass.setBounds(240, y_axis + 100, 200, 30);
@@ -149,8 +155,53 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
                 additional_users[i] = new Users(passName[i].getText(),passGender[i].getSelectedItem().toString(),passAge[i].getText(),passRelation[i].getSelectedItem().toString());
             }
 
-            Ticket t = new Ticket(Users.currentUser.username,BookingUI.selected_depart,BookingUI.selected_dest,BookingUI.selectedDate(),Integer.toString(FlightShowingUI.selectedFlight.departureTime),Integer.toString(FlightShowingUI.selectedFlight.arrivalTime),additional_users);
-            ticketQueue.add(BookingUI.selectedDate(),t);
+            if(eClass.isSelected()){
+                int front = FlightShowingUI.selectedFlight.front2;
+                int rear = FlightShowingUI.selectedFlight.rear2;
+                int size = FlightShowingUI.selectedFlight.economyclass_seats;
+
+                if((rear+1)%size == front){
+                    JOptionPane.showMessageDialog(null, "No seats available");
+                    return;
+                }
+                Ticket t = new Ticket(Users.currentUser.username,BookingUI.selected_depart,BookingUI.selected_dest,BookingUI.selectedDate(),Integer.toString(FlightShowingUI.selectedFlight.departureTime),Integer.toString(FlightShowingUI.selectedFlight.arrivalTime),"Economy class",additional_users);
+                if(front == -1 && rear == -1){
+                    front = rear = 0;
+                    FlightShowingUI.selectedFlight.economyTickets[rear] = t;
+                    FlightShowingUI.selectedFlight.front2 = front;
+                    FlightShowingUI.selectedFlight.rear2 = rear;
+                }
+                else{
+                    rear = (rear+1)%size;
+                    FlightShowingUI.selectedFlight.economyTickets[rear] = t;
+                    FlightShowingUI.selectedFlight.rear2 = rear;
+                }
+                ticketQueue.add(BookingUI.selectedDate(),t);
+            }
+
+            if(bClass.isSelected()){
+                int front = FlightShowingUI.selectedFlight.front1;
+                int rear = FlightShowingUI.selectedFlight.rear1;
+                int size = FlightShowingUI.selectedFlight.businessclass_seats;
+
+                if((rear+1)%size == front){
+                    JOptionPane.showMessageDialog(null, "No seats available");
+                    return;
+                }
+                Ticket t = new Ticket(Users.currentUser.username,BookingUI.selected_depart,BookingUI.selected_dest,BookingUI.selectedDate(),Integer.toString(FlightShowingUI.selectedFlight.departureTime),Integer.toString(FlightShowingUI.selectedFlight.arrivalTime),"Business class",additional_users);
+                if(front == -1 && rear == -1){
+                    front = rear = 0;
+                    FlightShowingUI.selectedFlight.businessTickets[rear] = t;
+                    FlightShowingUI.selectedFlight.front1 = front;
+                    FlightShowingUI.selectedFlight.rear1 = rear;
+                }
+                else{
+                    rear = (rear+1)%size;
+                    FlightShowingUI.selectedFlight.businessTickets[rear] = t;
+                    FlightShowingUI.selectedFlight.rear1 = rear;
+                }
+                ticketQueue.add(BookingUI.selectedDate(),t);
+            }
             ticketQueue.printList();
         }
 

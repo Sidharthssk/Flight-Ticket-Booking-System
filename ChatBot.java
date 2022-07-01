@@ -17,9 +17,9 @@ public class ChatBot extends Users {
 
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(splitby);
-                FlightDetails flight = new FlightDetails(data[1], data[2], data[3], data[4], Integer.parseInt(data[5]),
-                        Integer.parseInt(data[6]), Integer.parseInt(data[7]), Integer.parseInt(data[8]),
-                        Integer.parseInt(data[9]), Integer.parseInt(data[10]));
+                FlightDetails flight = new FlightDetails(data[1], data[2], data[3], data[4], data[5], Integer.parseInt(data[6]),
+                        Integer.parseInt(data[7]), Integer.parseInt(data[8]), Integer.parseInt(data[9]),
+                        Integer.parseInt(data[10]), Integer.parseInt(data[11]));
                 FlightDetails.flightlist.add(flight);
             }
         } catch (FileNotFoundException e) {

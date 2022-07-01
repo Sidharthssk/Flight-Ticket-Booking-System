@@ -43,7 +43,7 @@ public class BookingUI extends JFrame implements ActionListener {
 
     Container c;
 
-    static String selected_date, selected_month, selected_year, selected_dest, selected_depart, selected_number = "4";
+    static String selected_date, selected_month, selected_year, selected_dest, selected_depart, selected_number, final_selected_date;
 
     BookingUI() {
 
@@ -168,6 +168,7 @@ public class BookingUI extends JFrame implements ActionListener {
                     if (Integer.parseInt(selected_date) < 10) {
                         selected_date = "0" + selected_date;
                     }
+                    final_selected_date = selected_date+"/"+month_number.get(selected_month)+"/"+selected_year;
                     new FlightShowingUI();
                     dispose();
                 }
@@ -182,6 +183,7 @@ public class BookingUI extends JFrame implements ActionListener {
     }
 
     static LocalDate selectedDate() {
+        
         return LocalDate.of(Integer.parseInt(selected_year),
                 Integer.parseInt(month_number.get(selected_month)), Integer.parseInt(selected_date));
     }

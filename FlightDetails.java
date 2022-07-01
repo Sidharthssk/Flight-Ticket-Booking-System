@@ -1,8 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Calendar;
-import java.util.Random;
 
 public class FlightDetails {
 
@@ -16,7 +12,13 @@ public class FlightDetails {
     int economyclass_seats;
     int economyclass_ticket_fare;
     int businessclass_ticket_fare;
-    Ticket[] tickets;
+    String date;
+    Ticket[] businessTickets;
+    Ticket[] economyTickets;
+    int front1 = -1;
+    int rear1 = -1;
+    int front2 = -1;
+    int rear2 = -1;
 
     FlightDetails() {
     }
@@ -28,7 +30,7 @@ public class FlightDetails {
         this.arrivalTime = arrivalTime;
     }
 
-    FlightDetails(String name, String flight_no, String departure_airport, String arrival_airport, int departureTime,
+    FlightDetails(String name, String flight_no, String departure_airport, String arrival_airport, String date,int departureTime,
             int arrivalTime, int businessclass_seats, int economyclass_seats, int economyclass_ticket_fare,
             int businessclass_ticket_fare) {
         this.name = name;
@@ -41,7 +43,9 @@ public class FlightDetails {
         this.economyclass_seats = economyclass_seats;
         this.economyclass_ticket_fare = economyclass_ticket_fare;
         this.businessclass_ticket_fare = businessclass_ticket_fare;
-        this.tickets = new Ticket[businessclass_seats + economyclass_seats];
+        this.businessTickets = new Ticket[businessclass_seats];
+        this.economyTickets = new Ticket[economyclass_seats];
+        this.date = date;
     }
 
     static int generateRandomNumber(int min, int max) {
