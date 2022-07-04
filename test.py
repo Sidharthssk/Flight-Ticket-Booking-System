@@ -10,7 +10,7 @@ df = pd.DataFrame(columns=['Name', 'Flight no', 'Departure Airport', 'Destinatio
         'Departure Time','Arival Time','Businessclass seats','Economyclass seats',
         'Economyclass ticket fare','Businessclass ticket fare'])
 print(df)
-for x in range(30000):
+for x in range(30):
     name = names[random.randint(0, len(names) - 1)]
     flightNo = name_map[name]+str(random.randint(100,900))
     departure_airport = locs1[random.randint(0, len(locs1) - 1)]
@@ -29,6 +29,17 @@ for x in range(30000):
           businessclass_seats,economyclass_seats,economyclass_ticket_fare,businessclass_ticket_fare]
     df.loc[x] = new
 
-print(df.iloc[:,:6])
+#print(df.iloc[:,:6])
 df.to_csv("flight_details.csv")
+f=open("flight_details.csv")
+a=f.readlines()
+b=a[1:]
+f.close()
+f2=open("flight_new.csv","w")
+for x in b:
+    f2.writelines(x)
+
+f2.close()
+
+
 

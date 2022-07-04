@@ -35,7 +35,7 @@ public class BookingUI extends JFrame implements ActionListener {
     String[] depart = { "select", "Cochin", "Trivandrum", "Kozhikode", "Mumbai", "NewDelhi" };
     String[] dest = { "select", "Dammam", "Riyadh", "Qatar", "Kuwait", "Dubai" };
     String[] class1 = { "select", "Economy", "Business" };
-    String[] number = { "select", "1", "2", "3", "4", "5", "6" };
+    String[] number = { "select", "1", "2", "3", "4"};
 
     JLabel booking, lbl_date, lbl_depart, lbl_dest, lbl_class, lbl_number;
     JButton back, destination, ok, cancel;
@@ -130,7 +130,7 @@ public class BookingUI extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == back) {
-            MainUI main = new MainUI();
+            new MainUI();
             dispose();
             return;
         }
@@ -183,7 +183,6 @@ public class BookingUI extends JFrame implements ActionListener {
     }
 
     static LocalDate selectedDate() {
-        
         return LocalDate.of(Integer.parseInt(selected_year),
                 Integer.parseInt(month_number.get(selected_month)), Integer.parseInt(selected_date));
     }

@@ -32,6 +32,7 @@ public class MainUI extends Users implements ActionListener {
         bookings = new JButton("Bookings");
         bookings.setBounds(200, 140, 100, 30);
         c.add(bookings);
+        bookings.addActionListener(this);
 
         flight_status = new JButton("Flight Status");
         flight_status.setBounds(700, 140, 100, 30);
@@ -48,7 +49,9 @@ public class MainUI extends Users implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-
+        if(e.getSource() == bookings){
+            new BookingUI();
+        }
     }
 
 }

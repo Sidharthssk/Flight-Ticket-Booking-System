@@ -13,9 +13,9 @@ public class SortedPriorityQueue {
         }
     }
 
-    Node head = null;
-    Node tail = null;
-    int size = 0;
+    static Node head = null;
+    static Node tail = null;
+    static int size = 0;
 
     void add(LocalDate priority, Ticket data) {
         Node newNode = new Node(priority, data);
@@ -51,7 +51,19 @@ public class SortedPriorityQueue {
         }
     }
 
+    static void remove(){
+        Node current = head;
+        while(current!=null){
+            if(LocalDate.now().isAfter(current.priority)){
+                head = head.next;
+                size--;
+            }
+        }
+    }
+
     void printList() {
+        remove();
+
         Node current = head;
 
         while (current != null) {
@@ -64,38 +76,5 @@ public class SortedPriorityQueue {
         }
         System.out.println();
     }
-
-    // int len(){
-    // return size;
-    // }
-
-    // int [] min(){
-    // int [] array = new int[2];
-
-    // array[0] = head.priority;
-    // array[1] = head.data;
-
-    // return array;
-    // }
-
-    // int [] remove_min(){
-    // int [] array = new int[2];
-
-    // array[0] = head.priority;
-    // array[1] = head.data;
-
-    // head = head.next;
-
-    // size--;
-
-    // return array;
-    // }
-
-    // boolean is_empty(){
-    // if(size == 0){
-    // return true;
-    // }
-    // return false;
-    // }
 
 }

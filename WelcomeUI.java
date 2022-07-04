@@ -50,11 +50,11 @@ class WelcomeUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == login){
-            Login login = new Login();
+            new Login();
             dispose();
         }
         else if(e.getSource() == signup){
-            SignUp signup = new SignUp();
+            new SignUp();
             dispose();
         }
 

@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.FileInputStream;
 
 public class ChatBot extends Users {
 
@@ -11,32 +13,27 @@ public class ChatBot extends Users {
     public static void main(String[] args) {
         String line = "";
         String splitby = ",";
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader("flight_details.csv"));
-
+        try (BufferedReader br = new BufferedReader(new FileReader("flight_details.csv"))) {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(splitby);
-                FlightDetails flight = new FlightDetails(data[1], data[2], data[3], data[4], data[5], Integer.parseInt(data[6]),
+                FlightDetails flight = new FlightDetails(data[1], data[2], data[3], data[4], data[5],
+                        Integer.parseInt(data[6]),
                         Integer.parseInt(data[7]), Integer.parseInt(data[8]), Integer.parseInt(data[9]),
                         Integer.parseInt(data[10]), Integer.parseInt(data[11]));
                 FlightDetails.flightlist.add(flight);
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found exception");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch (IOException e){
-            System.out.println("IO exception");
-        }
-        finally{
-            if(br!=null){
-                try{
-                    br.close();
-                }
-                catch(IOException e){
-                    System.out.println("IO exception");
-                }
+        try (FileInputStream fi = new FileInputStream(new File("users.txt"))) {
+            ObjectInputStream oi = new ObjectInputStream(fi);
+            while (fi.available() != 0) {
+                Users.usersList.add((Users) oi.readObject());
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
         }
 
         for (int i = 0; i < 10; i++) {
@@ -51,10 +48,6 @@ public class ChatBot extends Users {
             FlightShowingUI.labels[i][8] = new JLabel("");
             FlightShowingUI.buttons[i] = new JButton("");
         }
-        // WelcomeUI w = new WelcomeUI();
-        BookingUI b = new BookingUI();
-        // FlightShowingUI f = new FlightShowingUI();
-        // TicketDetailsUI t = new TicketDetailsUI();
-        // new MainUI();
+        new WelcomeUI();
     }
 }
