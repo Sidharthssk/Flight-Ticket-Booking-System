@@ -91,8 +91,6 @@ class FlightShowingUI extends JFrame implements ActionListener {
                 c.add(buttons[i]);
                 buttons[i].addActionListener(this);
     
-                System.out.println(flightDetails[i].name);
-    
                 y_axis += 50;
             }
             

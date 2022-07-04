@@ -22,6 +22,7 @@ public class MainUI extends Users implements ActionListener {
 
         back = new JButton("Back");
         back.setBounds(5, 5, 70, 25);
+        back.addActionListener(this);
         c.add(back);
 
         welcome_User = new JLabel("Hi " + currentUser.username + ". ", JLabel.CENTER);
@@ -48,9 +49,13 @@ public class MainUI extends Users implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         if(e.getSource() == bookings){
+            dispose();
             new BookingUI();
+        }
+        else if (e.getSource() == back){
+            dispose();
+            new Login();
         }
     }
 
