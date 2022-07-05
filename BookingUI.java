@@ -205,7 +205,7 @@ class ReturnUI extends JFrame implements ActionListener {
 
     ReturnUI() {
         setTitle("Return Flight");
-        setSize(800, 600);
+        setSize(1000, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -219,58 +219,58 @@ class ReturnUI extends JFrame implements ActionListener {
         back.addActionListener(this);
 
         returnBook = new JLabel("Return Booking");
-        returnBook.setBounds(0, 40, 1000, 50);
+        returnBook.setBounds(390, 40, 300, 50);
         returnBook.setFont(new Font("Arial", Font.BOLD, 30));
         c.add(returnBook);
 
-        lblJdate = new JLabel("Journey Date : " + BookingUI.final_selected_date);
-        lblJdate.setBounds(250, 100, 300, 30);
+        lblJdate = new JLabel("Journey Date : " + BookingUI.final_selected_date, JLabel.CENTER);
+        lblJdate.setBounds(350, 110, 300, 30);
         lblJdate.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(lblJdate);
 
         lblDate = new JLabel("Date of Return", JLabel.LEFT);
-        lblDate.setBounds(175, 130, 200, 30);
+        lblDate.setBounds(210, 150, 200, 30);
         lblDate.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(lblDate);
 
         cb_year = new JComboBox(BookingUI.year);
-        cb_year.setBounds(425, 130, 100, 30);
+        cb_year.setBounds(420, 150, 100, 30);
         cb_year.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_year);
 
         cb_month = new JComboBox(BookingUI.month);
-        cb_month.setBounds(535, 130, 150, 30);
+        cb_month.setBounds(525, 150, 150, 30);
         cb_month.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_month);
         cb_month.addActionListener(this);
 
         cb_day = new JComboBox(BookingUI.day);
-        cb_day.setBounds(695, 130, 100, 30);
+        cb_day.setBounds(685, 150, 100, 30);
         cb_day.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(cb_day);
 
-        lblDepart = new JLabel("Departure : " + BookingUI.selected_dest, JLabel.LEFT);
-        lblDepart.setBounds(175, 170, 250, 30);
+        lblDepart = new JLabel("Departure :                " + BookingUI.selected_dest, JLabel.LEFT);
+        lblDepart.setBounds(210, 190, 400, 30);
         lblDepart.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(lblDepart);
 
-        lblDest = new JLabel("Destination : " + BookingUI.selected_depart, JLabel.LEFT);
-        lblDest.setBounds(175, 200, 250, 30);
+        lblDest = new JLabel("Destination :              " + BookingUI.selected_depart, JLabel.LEFT);
+        lblDest.setBounds(210, 230, 400, 30);
         lblDest.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(lblDest);
 
-        lblNumber = new JLabel("Number of Seats : " + BookingUI.selected_number, JLabel.LEFT);
-        lblNumber.setBounds(175, 230, 250, 30);
+        lblNumber = new JLabel("Number of Seats :     " + BookingUI.selected_number, JLabel.LEFT);
+        lblNumber.setBounds(210, 270, 400, 30);
         lblNumber.setFont(new Font("Arial", Font.BOLD, 20));
         c.add(lblNumber);
 
         cancel = new JButton("Cancel");
-        cancel.setBounds(295, 260, 100, 25);
+        cancel.setBounds(295, 310, 100, 25);
         c.add(cancel);
         cancel.addActionListener(this);
 
         ok = new JButton("OK");
-        ok.setBounds(405, 260, 100, 25);
+        ok.setBounds(405, 310, 100, 25);
         c.add(ok);
         ok.addActionListener(this);
 
