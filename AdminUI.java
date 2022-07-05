@@ -13,8 +13,8 @@ public class AdminUI extends JFrame implements ActionListener {
     AdminUI() {
 
         setTitle("Booking.com");
-        setSize(1000, 800);
-        setLocation(100, 100);
+        setSize(1000, 600);
+        setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         c = getContentPane();

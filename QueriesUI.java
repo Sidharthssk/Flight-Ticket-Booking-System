@@ -14,8 +14,8 @@ public class QueriesUI extends JFrame implements ActionListener {
     QueriesUI(){
             
             setTitle("Booking.com");
-            setSize(1000, 800);
-            setLocation(100, 100);
+            setSize(1000, 700);
+            setLocation(200, 50);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
     
             c = getContentPane();
@@ -38,18 +38,18 @@ public class QueriesUI extends JFrame implements ActionListener {
             back.addActionListener(this);
     
             submit = new JButton("Submit");
-            submit.setBounds(450, 550, 100, 30);
+            submit.setBounds(450, 530, 100, 30);
             c.add(submit);
             submit.addActionListener(this);
     
             success = new JLabel("Query submitted successfully.", JLabel.CENTER);
-            success.setBounds(300, 600, 400, 30);
+            success.setBounds(300, 570, 400, 30);
             success.setFont(new Font("Arial", Font.BOLD, 15));
             c.add(success);
             success.setVisible(false);
 
             ok = new JButton("OK");
-            ok.setBounds(470, 650, 60, 25);
+            ok.setBounds(470, 610, 60, 25);
             c.add(ok);
             ok.addActionListener(this);
             ok.setVisible(false);

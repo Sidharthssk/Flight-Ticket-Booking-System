@@ -50,5 +50,6 @@ public class ChatBot extends Users {
             FlightShowingUI.buttons[i] = new JButton("");
         }
         new WelcomeUI();
+        //new QueriesUI();
     }
 }

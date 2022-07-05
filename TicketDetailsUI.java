@@ -19,8 +19,8 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
     TicketDetailsUI() {
 
         setTitle("Ticket Details");
-        setSize(1000, 800);
-        setLocation(100, 100);
+        setSize(1000, 700);
+        setLocation(200, 50);
 
         c = getContentPane();
         c.setLayout(null);
@@ -106,12 +106,12 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
         }
 
         eClass = new JRadioButton("Economy Class");
-        eClass.setBounds(240, y_axis + 100, 200, 30);
+        eClass.setBounds(295, y_axis + 100, 200, 30);
         eClass.setFont(new Font("Arial", Font.PLAIN, 20));
         c.add(eClass);
 
         bClass = new JRadioButton("Business Class");
-        bClass.setBounds(450, y_axis + 100, 200, 30);
+        bClass.setBounds(505, y_axis + 100, 200, 30);
         bClass.setFont(new Font("Arial", Font.PLAIN, 20));
         c.add(bClass);
 
@@ -121,12 +121,12 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
         eClass.setSelected(true);
 
         cancel = new JButton("Cancel");
-        cancel.setBounds(250, y_axis + 200, 90, 30);
+        cancel.setBounds(350, y_axis + 150, 90, 30);
         cancel.addActionListener(this);
         c.add(cancel);
 
         confirm = new JButton("Confirm");
-        confirm.setBounds(450, y_axis + 200, 90, 30);
+        confirm.setBounds(510, y_axis + 150, 90, 30);
         confirm.addActionListener(this);
         c.add(confirm);
 

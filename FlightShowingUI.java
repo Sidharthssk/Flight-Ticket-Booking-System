@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.math.*;
 
 class FlightShowingUI extends JFrame implements ActionListener {
 
@@ -21,8 +22,8 @@ class FlightShowingUI extends JFrame implements ActionListener {
 
     FlightShowingUI() {
         setTitle("Flight details");
-        setSize(1200, 800);
-        setLocation(100, 100);
+        setSize(1200, 600);
+        setLocation(200, 50);
         c = getContentPane();
         c.setLayout(null);
 
@@ -40,11 +41,11 @@ class FlightShowingUI extends JFrame implements ActionListener {
 
         if(h == 0){
             JLabel lbl = new JLabel("No flights found");
-            lbl.setBounds(500, 500, 200, 50);
+            lbl.setBounds(500, 350, 200, 50);
             c.add(lbl);
 
             back = new JButton("Back");
-            back.setBounds(500, 600, 200, 50); 
+            back.setBounds(500, 400, 200, 40); 
             c.add(back);
             back.addActionListener(this);
         }
@@ -112,23 +113,23 @@ class FlightShowingUI extends JFrame implements ActionListener {
                 labels[i][3].setBounds(380, y_axis, 100, 30);
                 c.add(labels[i][3]);
     
-                labels[i][4].setText(Integer.toString(flightDetails[i].departureTime));
+                labels[i][4].setText(Integer.toString(flightDetails[i].departureTime)+":00");
                 labels[i][4].setBounds(490, y_axis, 100, 30);
                 c.add(labels[i][4]);
     
-                labels[i][5].setText(Integer.toString(flightDetails[i].arrivalTime));
+                labels[i][5].setText(Integer.toString(flightDetails[i].arrivalTime)+":00");
                 labels[i][5].setBounds(600, y_axis, 100, 30);
                 c.add(labels[i][5]);
     
-                labels[i][6].setText(Integer.toString(flightDetails[i].arrivalTime - flightDetails[i].departureTime));
+                labels[i][6].setText(Integer.toString(Math.abs(flightDetails[i].arrivalTime - flightDetails[i].departureTime))+":00");
                 labels[i][6].setBounds(710, y_axis, 100, 30);
                 c.add(labels[i][6]);
     
-                labels[i][7].setText(Integer.toString(flightDetails[i].economyclass_ticket_fare));
+                labels[i][7].setText("Rs. "+Integer.toString(flightDetails[i].economyclass_ticket_fare));
                 labels[i][7].setBounds(820, y_axis, 100, 30);
                 c.add(labels[i][7]);
     
-                labels[i][8].setText(Integer.toString(flightDetails[i].businessclass_ticket_fare));
+                labels[i][8].setText("Rs. "+Integer.toString(flightDetails[i].businessclass_ticket_fare));
                 labels[i][8].setBounds(930, y_axis, 100, 30);
                 c.add(labels[i][8]);
     
@@ -153,7 +154,7 @@ class FlightShowingUI extends JFrame implements ActionListener {
         }
         for (int i = 0; i < h; i++) {
             if (e.getSource() == buttons[i]) {
-                JOptionPane.showMessageDialog(this, "Booked successfully");
+                JOptionPane.showMessageDialog(this, "Flight Selected");
                 selectedFlight = FlightDetails.flightlist.get(i);
                 dispose();
                 c.removeAll();

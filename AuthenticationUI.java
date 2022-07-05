@@ -21,7 +21,7 @@ class Login extends Users implements ActionListener {
     Login() {
 
         setSize(400, 400);
-        setLocation(100, 100);
+        setLocation(550, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         c = getContentPane();

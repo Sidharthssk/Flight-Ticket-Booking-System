@@ -7,14 +7,14 @@ import java.awt.event.*;
 public class MainUI extends Users implements ActionListener {
 
     JLabel welcome_User;
-    JButton back, bookings, flight_status, holiday_planner,  Logout, Profile;
+    JButton back, bookings, query, holiday_planner,  Logout, Profile;
     Container c;
 
     MainUI() {
 
         setTitle("Booking.com");
-        setSize(1000, 800);
-        setLocation(100, 100);
+        setSize(1000, 600);
+        setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         c = getContentPane();
@@ -25,22 +25,27 @@ public class MainUI extends Users implements ActionListener {
         back.addActionListener(this);
         c.add(back);
 
+        Logout = new JButton("Logout");
+        Logout.setBounds(880, 5, 100, 25);
+        Logout.addActionListener(this);
+        c.add(Logout);
+
         welcome_User = new JLabel("Hi " + currentUser.username + ". ", JLabel.CENTER);
         welcome_User.setBounds(0, 40, 1000, 50);
         welcome_User.setFont(new Font("Arial", Font.BOLD, 30));
         c.add(welcome_User);
 
         bookings = new JButton("Bookings");
-        bookings.setBounds(200, 140, 100, 30);
+        bookings.setBounds(300, 140, 100, 30);
         c.add(bookings);
         bookings.addActionListener(this);
 
-        flight_status = new JButton("Flight Status");
-        flight_status.setBounds(700, 140, 100, 30);
-        c.add(flight_status);
+        query = new JButton("Add Query");
+        query.setBounds(450, 140, 100, 30);
+        c.add(query);
 
-        holiday_planner = new JButton("Holiday Planner");
-        holiday_planner.setBounds(200, 240, 100, 30);
+        holiday_planner = new JButton("View History");
+        holiday_planner.setBounds(600, 140, 120, 30);
         c.add(holiday_planner);
 
         setVisible(true);
@@ -54,6 +59,15 @@ public class MainUI extends Users implements ActionListener {
             new BookingUI();
         }
         else if (e.getSource() == back){
+            dispose();
+            new Login();
+        }
+        else if (e.getSource() == query){
+            dispose();
+            new QueriesUI();
+        }
+        
+        else if (e.getSource() == Logout){
             dispose();
             new Login();
         }

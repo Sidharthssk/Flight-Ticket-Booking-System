@@ -15,8 +15,8 @@ class WelcomeUI extends JFrame implements ActionListener {
     WelcomeUI() {
 
         setTitle("Booking.com");
-        setSize(1000, 800);
-        setLocation(100, 100);
+        setSize(1000, 600);
+        setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         c = getContentPane();

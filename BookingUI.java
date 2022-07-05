@@ -48,8 +48,8 @@ public class BookingUI extends JFrame implements ActionListener {
     BookingUI() {
 
         setTitle("Ticket Booking");
-        setSize(1000, 800);
-        setLocation(100, 100);
+        setSize(1000, 600);
+        setLocation(200, 50);
 
         c = getContentPane();
         c.setLayout(null);
