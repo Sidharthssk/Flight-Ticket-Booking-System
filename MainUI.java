@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class MainUI extends Users implements ActionListener {
 
     JLabel welcome_User;
-    JButton back, bookings, query, holiday_planner,  Logout, Profile;
+    JButton back, bookings, query, holiday_planner, Logout, Profile;
     Container c;
 
     MainUI() {
@@ -48,8 +48,12 @@ public class MainUI extends Users implements ActionListener {
         holiday_planner.setBounds(600, 140, 120, 30);
         c.add(holiday_planner);
 
-        setVisible(true);
+        Profile = new JButton("Profile");
+        Profile.setBounds(770, 5, 100, 25);
+        c.add(Profile);
+        Profile.addActionListener(this);
 
+        setVisible(true);
     }
 
     @Override
@@ -72,5 +76,4 @@ public class MainUI extends Users implements ActionListener {
             new Login();
         }
     }
-
 }

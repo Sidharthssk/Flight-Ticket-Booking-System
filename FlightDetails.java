@@ -53,6 +53,7 @@ public class FlightDetails {
     }
 
     static ArrayList<FlightDetails> flightlist = new ArrayList<>();
+    static ArrayList<FlightDetails> returnflights = new ArrayList<>();
 
     static String[] flightName = { "Air India", "Indigo", "Air Asia", "Fly Dubai", "SpiceJet" };
     static String[] destination = { "Dammam", "Riyadh", "Qatar", "Kuwait", "Dubai" };

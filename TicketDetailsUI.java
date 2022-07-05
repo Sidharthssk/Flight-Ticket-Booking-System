@@ -15,6 +15,8 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
     JComboBox<String>[] passGender = new JComboBox[Integer.parseInt(BookingUI.selected_number)];
     JComboBox<String>[] passRelation = new JComboBox[Integer.parseInt(BookingUI.selected_number)];
 
+    static String selectedClass;
+    static Users[] additional_users = new Users[Integer.parseInt(BookingUI.selected_number)];
 
     TicketDetailsUI() {
 
@@ -145,13 +147,14 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
         }
 
         if (e.getSource() == confirm) {
-            Users[] additional_users = new Users[Integer.parseInt(BookingUI.selected_number)];
+            
             for (int i = 0; i < Integer.parseInt(BookingUI.selected_number)-1; i++) {
                 additional_users[i] = new Users(passName[i].getText(), passGender[i].getSelectedItem().toString(),
                         passAge[i].getText(), passRelation[i].getSelectedItem().toString());
             }
 
             if (eClass.isSelected()) {
+                selectedClass = "Economy Class";
                 int front = FlightShowingUI.selectedFlight.front2;
                 int rear = FlightShowingUI.selectedFlight.rear2;
                 int size = FlightShowingUI.selectedFlight.economyclass_seats;
@@ -162,7 +165,7 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
                 }
                 Ticket t = new Ticket(Users.currentUser.username, BookingUI.selected_depart, BookingUI.selected_dest,
                         BookingUI.selectedDate(), Integer.toString(FlightShowingUI.selectedFlight.departureTime),
-                        Integer.toString(FlightShowingUI.selectedFlight.arrivalTime), "Economy class",
+                        Integer.toString(FlightShowingUI.selectedFlight.arrivalTime), "Economy Class",
                         additional_users);
                 if (front == -1 && rear == -1) {
                     front = rear = 0;
@@ -178,6 +181,7 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
             }
 
             if (bClass.isSelected()) {
+                selectedClass = "Business Class";
                 int front = FlightShowingUI.selectedFlight.front1;
                 int rear = FlightShowingUI.selectedFlight.rear1;
                 int size = FlightShowingUI.selectedFlight.businessclass_seats;
@@ -188,7 +192,7 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
                 }
                 Ticket t = new Ticket(Users.currentUser.username, BookingUI.selected_depart, BookingUI.selected_dest,
                         BookingUI.selectedDate(), Integer.toString(FlightShowingUI.selectedFlight.departureTime),
-                        Integer.toString(FlightShowingUI.selectedFlight.arrivalTime), "Business class",
+                        Integer.toString(FlightShowingUI.selectedFlight.arrivalTime), "Business Class",
                         additional_users);
                 if (front == -1 && rear == -1) {
                     front = rear = 0;
@@ -203,8 +207,7 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
                 ticketQueue.add(BookingUI.selectedDate(), t);
             }
             dispose();
-            new Login();
+            new ReturnUI();
         }
-
     }
 }

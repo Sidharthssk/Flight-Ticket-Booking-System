@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 class Users extends JFrame implements Serializable{
 
@@ -89,5 +91,20 @@ class Users extends JFrame implements Serializable{
 
     // ArrayList for storing user data
     static ArrayList<Users> usersList = new ArrayList<>();
+}
+
+class ProfileUI extends JFrame implements ActionListener {
+
+    JButton back, logout;
+    JLabel username, email, number, age, country, gender;
+    Container c;
+
+    ProfileUI(){
+        
+    }
+
+    public void actionPerformed(ActionEvent e){
+
+    }
 
 }

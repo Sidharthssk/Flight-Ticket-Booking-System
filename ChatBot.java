@@ -22,6 +22,12 @@ public class ChatBot extends Users {
                         Integer.parseInt(data[7]), Integer.parseInt(data[8]), Integer.parseInt(data[9]),
                         Integer.parseInt(data[10]), Integer.parseInt(data[11]));
                 FlightDetails.flightlist.add(flight);
+
+                FlightDetails returnFlight = new FlightDetails(data[1], data[2], data[4], data[3], data[5],
+                        Integer.parseInt(data[6]),
+                        Integer.parseInt(data[7]), Integer.parseInt(data[8]), Integer.parseInt(data[9]),
+                        Integer.parseInt(data[10]), Integer.parseInt(data[11]));
+                FlightDetails.returnflights.add(returnFlight);
             }
         } catch (IOException e) {
             e.printStackTrace();
