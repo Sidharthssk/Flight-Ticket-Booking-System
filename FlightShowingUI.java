@@ -14,6 +14,7 @@ class FlightShowingUI extends JFrame implements ActionListener {
     static JButton[] buttons = new JButton[10];
     JButton back;
     Container c;
+    JLabel name, number, departure, arrival, dep_time, arr_time, duration, e_price, b_price;
 
     static FlightDetails[] flightDetails = new FlightDetails[10];
     int h = 0;
@@ -48,6 +49,51 @@ class FlightShowingUI extends JFrame implements ActionListener {
             back.addActionListener(this);
         }
         else{
+
+            name = new JLabel("Flight Name");
+            name.setBounds(50, 75, 100, 30);
+            name.setFont(new Font("Arial", Font.BOLD, 13));
+            c.add(name);
+
+            number = new JLabel("Flight Number");
+            number.setBounds(160, 75, 100, 30);
+            number.setFont(new Font("Arial", Font.BOLD, 13));
+            c.add(number);
+
+            departure = new JLabel("Departure");
+            departure.setBounds(270, 75, 100, 30);
+            departure.setFont(new Font("Arial", Font.BOLD, 13));
+            c.add(departure);
+
+            arrival = new JLabel("Arrival");
+            arrival.setBounds(380, 75, 100, 30);
+            arrival.setFont(new Font("Arial", Font.BOLD, 13));
+            c.add(arrival);
+
+            dep_time = new JLabel("Departure Time");
+            dep_time.setBounds(490, 75, 100, 30);
+            dep_time.setFont(new Font("Arial", Font.BOLD, 13));
+            c.add(dep_time);
+
+            arr_time = new JLabel("Arrival Time");
+            arr_time.setBounds(600, 75, 100, 30);
+            arr_time.setFont(new Font("Arial", Font.BOLD, 13));
+            c.add(arr_time);
+
+            duration = new JLabel("Duration");
+            duration.setBounds(710, 75, 100, 30);
+            duration.setFont(new Font("Arial", Font.BOLD, 13));
+            c.add(duration);
+
+            e_price = new JLabel("Economy Price");
+            e_price.setBounds(820, 75, 100, 30);
+            e_price.setFont(new Font("Arial", Font.BOLD, 13));
+            c.add(e_price);
+
+            b_price = new JLabel("Business Price");
+            b_price.setBounds(930, 75, 100, 30);
+            b_price.setFont(new Font("Arial", Font.BOLD, 13));
+            c.add(b_price);
 
             for (int i = 0; i < h; i++) {
                 labels[i][0].setText(flightDetails[i].name);
@@ -87,7 +133,7 @@ class FlightShowingUI extends JFrame implements ActionListener {
                 c.add(labels[i][8]);
     
                 buttons[i] = new JButton("Book");
-                buttons[i].setBounds(1040, y_axis, 100, 30);
+                buttons[i].setBounds(1040, y_axis, 100, 20);
                 c.add(buttons[i]);
                 buttons[i].addActionListener(this);
     

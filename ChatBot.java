@@ -8,12 +8,13 @@ import java.io.FileInputStream;
 
 public class ChatBot extends Users {
 
-    static SortedPriorityQueue ticketQueue = new SortedPriorityQueue();
+    static SortedPriorityQueue ticketQueue;
 
     public static void main(String[] args) {
+        ticketQueue = new SortedPriorityQueue();
         String line = "";
         String splitby = ",";
-        try (BufferedReader br = new BufferedReader(new FileReader("flight_details.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("flight_new.csv"))) {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(splitby);
                 FlightDetails flight = new FlightDetails(data[1], data[2], data[3], data[4], data[5],

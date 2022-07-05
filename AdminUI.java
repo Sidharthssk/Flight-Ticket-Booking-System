@@ -53,7 +53,7 @@ public class AdminUI extends JFrame implements ActionListener {
             new Login();
         } else if (e.getSource() == view_tickets) {
             dispose();
-            //new TicketListUI();
+            new TicketListUI();
         } else if (e.getSource() == view_query) {
             dispose();
             //new ViewQueries();
@@ -61,12 +61,4 @@ public class AdminUI extends JFrame implements ActionListener {
         
     }
 
-}
-
-class view_query{
-
-}
-
-class view_tickets{
-    
 }

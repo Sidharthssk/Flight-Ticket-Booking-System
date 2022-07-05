@@ -47,7 +47,7 @@ class Users extends JFrame implements Serializable{
     }
 
     //for testing change at last
-    static Users currentUser = new Users("Raghavan","male");
+    static Users currentUser;
 
     int authentication(int opt, Users user) {
 
