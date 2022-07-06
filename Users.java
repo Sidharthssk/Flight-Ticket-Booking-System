@@ -22,6 +22,9 @@ class Users extends JFrame implements Serializable{
     String country;
     String relation;
 
+    //For user history
+    Deque d;
+
     // Constructor for User
     Users(String username, String email, String password, String phone_number, String gender, String age,
             String country) {
@@ -32,6 +35,7 @@ class Users extends JFrame implements Serializable{
         this.gender = gender;
         this.age = age;
         this.country = country;
+        this.d = new Deque();
     }
 
     Users() {

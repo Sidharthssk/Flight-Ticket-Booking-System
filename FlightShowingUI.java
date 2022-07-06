@@ -318,9 +318,11 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
                 ReturnUI.selected_dest, ReturnUI.selectedDate(), 
                 Integer.toString(ReturnFlightShowingUI.selectedFlight.departureTime), 
                 Integer.toString(ReturnFlightShowingUI.selectedFlight.arrivalTime), 
-                TicketDetailsUI.selectedClass, TicketDetailsUI.additional_users);
+                TicketDetailsUI.selectedClass, selectedFlight.flightNo, TicketDetailsUI.additional_users);
 
                 ChatBot.ticketQueue.add(ReturnUI.selectedDate(),returnTicket);
+                int index = Users.usersList.indexOf(Users.currentUser);
+                Users.usersList.get(index).d.add(returnTicket);
 
                 if (TicketDetailsUI.selectedClass.equals("Economy")) {
                     int front = FlightShowingUI.selectedFlight.front2;
