@@ -59,7 +59,7 @@ class Queue extends JFrame implements ActionListener {
 class QueueUI extends Queue {
 
     JLabel query, queryText;
-    JButton back;
+    JButton back, solve;
     Container c;
 
     static Queue q = new Queue();
@@ -86,24 +86,35 @@ class QueueUI extends Queue {
         query.setBorder(border);
         c.add(query);
 
+        solve = new JButton("Solve");
+        solve.setBounds(800, 120, 100, 40);
+        c.add(solve);
+        solve.addActionListener(this);
+        solve.setVisible(false);
+
         Node current = q.front;
         int y = 120;
         int no = 1;
 
-        if(current == null){
+        if (current == null) {
             queryText = new JLabel("No queries.", JLabel.CENTER);
-            queryText.setBounds(400, y, 200, 40);
-            queryText.setFont(new Font("Arial", Font.BOLD, 20));
+            queryText.setBounds(400, y, 200, 25);
+            queryText.setFont(new Font("Arial", Font.BOLD, 15));
             queryText.setBorder(border);
             c.add(queryText);
         }
-        else{
+
+        else {
             while (current != null) {
-                queryText = new JLabel("<html><span>"+no+". "+"<br>"+current.data+"</span></html>", JLabel.LEFT);
-                queryText.setBounds(100, y, 800, 40);
+                queryText = new JLabel("<html><span>" + no + ". " + "<br>" + current.data + "</span></html>",
+                        JLabel.LEFT);
+                queryText.setBounds(100, y, 700, 40);
                 queryText.setFont(new Font("Arial", Font.PLAIN, 15));
                 queryText.setBorder(border);
                 c.add(queryText);
+
+                solve.setVisible(true);
+
                 current = current.next;
                 y += 50;
                 no++;
@@ -120,6 +131,11 @@ class QueueUI extends Queue {
         if (e.getSource() == back) {
             dispose();
             new AdminUI();
+        }
+        if (e.getSource() == solve) {
+            q.dequeue();
+            dispose();
+            new QueueUI();
         }
     }
 }

@@ -57,85 +57,15 @@ public class SortedPriorityQueue extends JFrame implements ActionListener {
         }
     }
 
-    // void printList() {
-    // Node current = head;
-
-    // while (current != null) {
-    // if (current == head) {
-    // System.out.print("(" + current.priority + "," + current.data + ")");
-    // } else {
-    // System.out.print(" -> " + "(" + current.priority + "," + current.data + ")");
-    // }
-    // current = current.next;
-    // }
-    // System.out.println();
-    // }
-
-    void printList() {
-        TicketListUI t = new TicketListUI();
-
-        Node current = head;
-        int y = 70;
+    void remove() {
+        Node current = ChatBot.ticketQueue.head;
         while (current != null) {
-
-            Border border = BorderFactory.createLineBorder(Color.BLACK);
-
-            t.passenger = new JLabel(current.data.passenger_name, JLabel.CENTER);
-            t.passenger.setBounds(100, y, 250, 20);
-            t.passenger.setFont(new Font("Arial", Font.BOLD, 15));
-            t.passenger.setBorder(border);
-            t.c.add(t.passenger);
-
-            t.from = new JLabel(current.data.from, JLabel.CENTER);
-            t.from.setBounds(350, y, 150, 20);
-            t.from.setFont(new Font("Arial", Font.BOLD, 15));
-            t.from.setBorder(border);
-            t.c.add(t.from);
-
-            t.to = new JLabel(current.data.to, JLabel.CENTER);
-            t.to.setBounds(500, y, 150, 20);
-            t.to.setFont(new Font("Arial", Font.BOLD, 15));
-            t.to.setBorder(border);
-            t.c.add(t.to);
-
-            t.date = new JLabel(current.data.date.toString(), JLabel.CENTER);
-            t.date.setBounds(650, y, 150, 20);
-            t.date.setFont(new Font("Arial", Font.BOLD, 15));
-            t.date.setBorder(border);
-            t.c.add(t.date);
-
-            t.departure_time = new JLabel(current.data.departure_time, JLabel.CENTER);
-            t.departure_time.setBounds(800, y, 150, 20);
-            t.departure_time.setFont(new Font("Arial", Font.BOLD, 15));
-            t.departure_time.setBorder(border);
-            t.c.add(t.departure_time);
-
-            t.arrival_time = new JLabel(current.data.arrival_time, JLabel.CENTER);
-            t.arrival_time.setBounds(950, y, 150, 20);
-            t.arrival_time.setFont(new Font("Arial", Font.BOLD, 15));
-            t.arrival_time.setBorder(border);
-            t.c.add(t.arrival_time);
-
-            t.class_type = new JLabel(current.data.class_type, JLabel.CENTER);
-            t.class_type.setBounds(1100, y, 150, 20);
-            t.class_type.setFont(new Font("Arial", Font.BOLD, 15));
-            t.class_type.setBorder(border);
-            t.c.add(t.class_type);
-
-            int dur = Integer.parseInt(current.data.arrival_time.substring(0, 2)) - Integer.parseInt(current.data.departure_time.substring(0, 2));
-
-            t.duration = new JLabel(Integer.toString(dur), JLabel.CENTER);
-            t.duration.setBounds(1250, y, 150, 20);
-            t.duration.setFont(new Font("Arial", Font.BOLD, 15));
-            t.duration.setBorder(border);
-            t.c.add(t.duration);
-
+            if (LocalDate.now().isAfter(current.priority)) {
+                head = current.next;
+                size--;
+            }
             current = current.next;
-            y = y + 20;
-
-
         }
-        System.out.println();
     }
 
     @Override
@@ -144,37 +74,171 @@ public class SortedPriorityQueue extends JFrame implements ActionListener {
 
     }
 
-    // int len(){
-    // return size;
-    // }
+}
 
-    // int [] min(){
-    // int [] array = new int[2];
+class PQueueUI extends SortedPriorityQueue {
 
-    // array[0] = head.priority;
-    // array[1] = head.data;
+    JLabel empty, number, number_lbl, passenger_lbl, from_lbl, to_lbl, date_lbl, departure_time_lbl, arrival_time_lbl,
+            class_type_lbl, duration_lbl, passenger, from, to, date, departure_time, arrival_time, class_type, duration;
+    JButton back, recent;
+    Container c;
 
-    // return array;
-    // }
+    PQueueUI() {
 
-    // int [] remove_min(){
-    // int [] array = new int[2];
+        setTitle("Booking.com");
+        setSize(1000, 700);
+        setLocation(200, 50);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-    // array[0] = head.priority;
-    // array[1] = head.data;
+        c = getContentPane();
+        c.setLayout(null);
 
-    // head = head.next;
+        back = new JButton("Back");
+        back.setBounds(5, 5, 70, 25);
+        c.add(back);
+        back.addActionListener(this);
 
-    // size--;
+        recent = new JButton("Active Tickets");
+        recent.setBounds(850, 5, 130, 25);
+        c.add(recent);
+        recent.addActionListener(this);
 
-    // return array;
-    // }
+        number = new JLabel("Number", JLabel.CENTER);
+        number.setBounds(50, 50, 100, 30);
+        number.setFont(new Font("Arial", Font.BOLD, 13));
+        c.add(number);
 
-    // boolean is_empty(){
-    // if(size == 0){
-    // return true;
-    // }
-    // return false;
-    // }
+        passenger_lbl = new JLabel("Passenger", JLabel.LEFT);
+        passenger_lbl.setBounds(150, 50, 100, 30);
+        passenger_lbl.setFont(new Font("Arial", Font.BOLD, 13));
+        c.add(passenger_lbl);
 
+        from_lbl = new JLabel("From", JLabel.LEFT);
+        from_lbl.setBounds(250, 50, 100, 30);
+        from_lbl.setFont(new Font("Arial", Font.BOLD, 13));
+        c.add(from_lbl);
+
+        to_lbl = new JLabel("To", JLabel.LEFT);
+        to_lbl.setBounds(350, 50, 100, 30);
+        to_lbl.setFont(new Font("Arial", Font.BOLD, 13));
+        c.add(to_lbl);
+
+        date_lbl = new JLabel("Date", JLabel.LEFT);
+        date_lbl.setBounds(450, 50, 100, 30);
+        date_lbl.setFont(new Font("Arial", Font.BOLD, 13));
+        c.add(date_lbl);
+
+        departure_time_lbl = new JLabel("Departure Time", JLabel.LEFT);
+        departure_time_lbl.setBounds(550, 50, 100, 30);
+        departure_time_lbl.setFont(new Font("Arial", Font.BOLD, 13));
+        c.add(departure_time_lbl);
+
+        arrival_time_lbl = new JLabel("Arrival Time", JLabel.LEFT);
+        arrival_time_lbl.setBounds(650, 50, 100, 30);
+        arrival_time_lbl.setFont(new Font("Arial", Font.BOLD, 13));
+        c.add(arrival_time_lbl);
+
+        duration_lbl = new JLabel("Duration", JLabel.LEFT);
+        duration_lbl.setBounds(750, 50, 100, 30);
+        duration_lbl.setFont(new Font("Arial", Font.BOLD, 13));
+        c.add(duration_lbl);
+
+        class_type_lbl = new JLabel("Class", JLabel.LEFT);
+        class_type_lbl.setBounds(850, 50, 100, 30);
+        class_type_lbl.setFont(new Font("Arial", Font.BOLD, 13));
+        c.add(class_type_lbl);
+
+        int y = 100;
+        Node current = ChatBot.ticketQueue.head;
+        int no = 1;
+
+        if (current == null) {
+            empty = new JLabel("No Recent Bookings", JLabel.CENTER);
+            empty.setBounds(250, 250, 500, 40);
+            empty.setFont(new Font("Arial", Font.BOLD, 15));
+            c.add(empty);
+            number.setVisible(false);
+            passenger_lbl.setVisible(false);
+            from_lbl.setVisible(false);
+            to_lbl.setVisible(false);
+            date_lbl.setVisible(false);
+            departure_time_lbl.setVisible(false);
+            arrival_time_lbl.setVisible(false);
+            duration_lbl.setVisible(false);
+            class_type_lbl.setVisible(false);
+        } else {
+            while (current != null) {
+                number = new JLabel(Integer.toString(no) + ".", JLabel.LEFT);
+                number.setBounds(50, y, 100, 30);
+                number.setFont(new Font("Arial", Font.BOLD, 12));
+                c.add(number);
+
+                passenger = new JLabel(current.data.passenger_name, JLabel.LEFT);
+                passenger.setBounds(150, y, 100, 30);
+                passenger.setFont(new Font("Arial", Font.BOLD, 12));
+                c.add(passenger);
+
+                from = new JLabel(current.data.from, JLabel.LEFT);
+                from.setBounds(250, y, 100, 30);
+                from.setFont(new Font("Arial", Font.BOLD, 12));
+                c.add(from);
+
+                to = new JLabel(current.data.to, JLabel.LEFT);
+                to.setBounds(350, y, 100, 30);
+                to.setFont(new Font("Arial", Font.BOLD, 12));
+                c.add(to);
+
+                date = new JLabel(current.data.date.toString(), JLabel.LEFT);
+                date.setBounds(450, y, 100, 30);
+                date.setFont(new Font("Arial", Font.BOLD, 12));
+                c.add(date);
+
+                departure_time = new JLabel(current.data.departure_time+":00", JLabel.LEFT);
+                departure_time.setBounds(550, y, 100, 30);
+                departure_time.setFont(new Font("Arial", Font.BOLD, 12));
+                c.add(departure_time);
+
+                arrival_time = new JLabel(current.data.arrival_time+":00", JLabel.LEFT);
+                arrival_time.setBounds(650, y, 100, 30);
+                arrival_time.setFont(new Font("Arial", Font.BOLD, 12));
+                c.add(arrival_time);
+
+                duration = new JLabel(Integer.toString(
+                        Integer.parseInt(current.data.arrival_time) - Integer.parseInt(current.data.departure_time))+":00",
+                        JLabel.LEFT);
+                duration.setBounds(750, y, 100, 30);
+                duration.setFont(new Font("Arial", Font.BOLD, 12));
+                c.add(duration);
+
+                class_type = new JLabel(current.data.class_type, JLabel.LEFT);
+                class_type.setBounds(850, y, 100, 30);
+                class_type.setFont(new Font("Arial", Font.BOLD, 12));
+                c.add(class_type);
+
+                y += 35;
+                current = current.next;
+                no++;
+            }
+        }
+
+        setVisible(true);
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == back) {
+            dispose();
+            new AdminUI();
+        }
+        if (e.getSource() == recent) {
+            new Thread(new Runnable() {
+                public void run() {
+                    ChatBot.ticketQueue.remove();
+                    dispose();
+                    new PQueueUI();
+                }
+            }).start();
+
+        }
+    }
 }

@@ -53,7 +53,7 @@ public class AdminUI extends JFrame implements ActionListener {
             new Login();
         } else if (e.getSource() == view_tickets) {
             dispose();
-            new TicketListUI();
+            new PQueueUI();
         } else if (e.getSource() == view_query) {
             dispose();
             new QueueUI();
