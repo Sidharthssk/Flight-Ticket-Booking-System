@@ -43,6 +43,7 @@ public class MainUI extends Users implements ActionListener {
         query = new JButton("Add Query");
         query.setBounds(450, 140, 100, 30);
         c.add(query);
+        query.addActionListener(this);
 
         holiday_planner = new JButton("View History");
         holiday_planner.setBounds(600, 140, 120, 30);
@@ -70,10 +71,13 @@ public class MainUI extends Users implements ActionListener {
             dispose();
             new QueriesUI();
         }
-        
         else if (e.getSource() == Logout){
             dispose();
             new Login();
+        }
+        else if (e.getSource() == Profile){
+            dispose();
+            new ProfileUI();
         }
     }
 }
