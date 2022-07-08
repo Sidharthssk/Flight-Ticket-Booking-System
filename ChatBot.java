@@ -54,6 +54,16 @@ public class ChatBot extends Users {
             FlightShowingUI.labels[i][7] = new JLabel("");
             FlightShowingUI.labels[i][8] = new JLabel("");
             FlightShowingUI.buttons[i] = new JButton("");
+            ReturnFlightShowingUI.labels[i][0] = new JLabel("");
+            ReturnFlightShowingUI.labels[i][1] = new JLabel("");
+            ReturnFlightShowingUI.labels[i][2] = new JLabel("");
+            ReturnFlightShowingUI.labels[i][3] = new JLabel("");
+            ReturnFlightShowingUI.labels[i][4] = new JLabel("");
+            ReturnFlightShowingUI.labels[i][5] = new JLabel("");
+            ReturnFlightShowingUI.labels[i][6] = new JLabel("");
+            ReturnFlightShowingUI.labels[i][7] = new JLabel("");
+            ReturnFlightShowingUI.labels[i][8] = new JLabel("");
+            ReturnFlightShowingUI.buttons[i] = new JButton("");
         }
         new WelcomeUI();
         //new QueriesUI();

@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -6,13 +5,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 class Deque extends JFrame implements ActionListener {
-    
-    //deque using doubly linked list
+
+    // deque using doubly linked list
     class Node {
         Ticket data;
         Node next;
         Node prev;
-        
+
         Node(Ticket data) {
             this.data = data;
             this.next = null;
@@ -27,7 +26,7 @@ class Deque extends JFrame implements ActionListener {
     void add(Ticket data) {
         Node newNode = new Node(data);
 
-        if (tail == null){
+        if (tail == null) {
             head = newNode;
             tail = newNode;
             size++;
@@ -39,10 +38,10 @@ class Deque extends JFrame implements ActionListener {
         }
     }
 
-    void remove(){
+    void remove() {
         tail = tail.prev;
 
-        if (tail == null){
+        if (tail == null) {
             head = null;
         } else {
             tail.next = null;
@@ -57,11 +56,12 @@ class Deque extends JFrame implements ActionListener {
     }
 }
 
-class DequeUI extends Deque {
+class DequeUI extends Deque implements ActionListener{
 
     JLabel history, empty, number, numberLbl, passLbl, flightnoLbl, fromLbl, toLbl, dateLbl, departureTimeLbl,
-            arrivalTimeLbl, classLbl, durationLbl;
-    
+            arrivalTimeLbl, classLbl, durationLbl, pass, flightno, from, to, date, departureTime, arrivalTime, duration,
+            sclass;
+
     JButton back;
     Container c;
 
@@ -80,9 +80,11 @@ class DequeUI extends Deque {
         c.add(back);
         back.addActionListener(this);
 
-        history = new JLabel("History", JLabel.CENTER);
-        history.setBounds(500, 50, 100, 25);
+        history = new JLabel("Booking History", JLabel.CENTER);
+        history.setBounds(450, 50, 200, 25);
         history.setFont(new Font("Arial", Font.BOLD, 13));
+        Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
+        history.setBorder(border);
         c.add(history);
 
         numberLbl = new JLabel("Number", JLabel.LEFT);
@@ -124,7 +126,7 @@ class DequeUI extends Deque {
         arrivalTimeLbl.setBounds(750, 100, 100, 30);
         arrivalTimeLbl.setFont(new Font("Arial", Font.BOLD, 13));
         c.add(arrivalTimeLbl);
-        
+
         durationLbl = new JLabel("Duration", JLabel.LEFT);
         durationLbl.setBounds(850, 100, 100, 30);
         durationLbl.setFont(new Font("Arial", Font.BOLD, 13));
@@ -134,6 +136,99 @@ class DequeUI extends Deque {
         classLbl.setBounds(950, 100, 100, 30);
         classLbl.setFont(new Font("Arial", Font.BOLD, 13));
         c.add(classLbl);
+
+        int index = Users.usersList.indexOf(Users.currentUser);
+
+        Node current = Users.usersList.get(index).d.tail;
+        int no = 1;
+        int y = 150;
+
+        if (current == null) {
+            empty = new JLabel("No Bookings", JLabel.CENTER);
+            empty.setBounds(500, 250, 100, 30);
+            empty.setFont(new Font("Arial", Font.BOLD, 15));
+            c.add(empty);
+
+            numberLbl.setVisible(false);
+            passLbl.setVisible(false);
+            flightnoLbl.setVisible(false);
+            fromLbl.setVisible(false);
+            toLbl.setVisible(false);
+            dateLbl.setVisible(false);
+            departureTimeLbl.setVisible(false);
+            arrivalTimeLbl.setVisible(false);
+            classLbl.setVisible(false);
+            durationLbl.setVisible(false);
+        } else {
+            while (current != null) {
+                number = new JLabel(Integer.toString(no), JLabel.LEFT);
+                number.setBounds(50, y, 100, 30);
+                number.setFont(new Font("Arial", Font.BOLD, 13));
+                c.add(number);
+
+                pass = new JLabel(current.data.passenger_name, JLabel.LEFT);
+                pass.setBounds(150, y, 100, 30);
+                pass.setFont(new Font("Arial", Font.BOLD, 13));
+                c.add(pass);
+
+                flightno = new JLabel(current.data.flightNo, JLabel.LEFT);
+                flightno.setBounds(250, y, 100, 30);
+                flightno.setFont(new Font("Arial", Font.BOLD, 13));
+                c.add(flightno);
+
+                from = new JLabel(current.data.from, JLabel.LEFT);
+                from.setBounds(350, y, 100, 30);
+                from.setFont(new Font("Arial", Font.BOLD, 13));
+                c.add(from);
+
+                to = new JLabel(current.data.to, JLabel.LEFT);
+                to.setBounds(450, y, 100, 30);
+                to.setFont(new Font("Arial", Font.BOLD, 13));
+                c.add(to);
+
+                date = new JLabel(current.data.date.toString(), JLabel.LEFT);
+                date.setBounds(550, y, 100, 30);
+                date.setFont(new Font("Arial", Font.BOLD, 13));
+                c.add(date);
+
+                departureTime = new JLabel(current.data.departure_time, JLabel.LEFT);
+                departureTime.setBounds(650, y, 100, 30);
+                departureTime.setFont(new Font("Arial", Font.BOLD, 13));
+                c.add(departureTime);
+
+                arrivalTime = new JLabel(current.data.arrival_time, JLabel.LEFT);
+                arrivalTime.setBounds(750, y, 100, 30);
+                arrivalTime.setFont(new Font("Arial", Font.BOLD, 13));
+                c.add(arrivalTime);
+
+                duration = new JLabel(Integer.toString(
+                        Integer.parseInt(current.data.arrival_time) - Integer.parseInt(current.data.departure_time)),
+                        JLabel.LEFT);
+                duration.setBounds(850, y, 100, 30);
+                duration.setFont(new Font("Arial", Font.BOLD, 13));
+                c.add(duration);
+
+                sclass = new JLabel(current.data.class_type, JLabel.LEFT);
+                sclass.setBounds(950, y, 100, 30);
+                sclass.setFont(new Font("Arial", Font.BOLD, 13));
+                c.add(sclass);
+
+                current = current.prev;
+                no++;
+                y += 50;
+
+            }
+        }
+
+        setVisible(true);
     }
-    
+
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        if (e.getSource() == back) {
+            dispose();
+            new MainUI();
+        }
+
+    }
 }

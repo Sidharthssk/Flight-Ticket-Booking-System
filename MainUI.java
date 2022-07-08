@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class MainUI extends Users implements ActionListener {
 
     JLabel welcome_User;
-    JButton back, bookings, query, holiday_planner, Logout, Profile;
+    JButton back, bookings, query, history, Logout, Profile;
     Container c;
 
     MainUI() {
@@ -45,9 +45,10 @@ public class MainUI extends Users implements ActionListener {
         c.add(query);
         query.addActionListener(this);
 
-        holiday_planner = new JButton("View History");
-        holiday_planner.setBounds(600, 140, 120, 30);
-        c.add(holiday_planner);
+        history = new JButton("View History");
+        history.setBounds(600, 140, 120, 30);
+        c.add(history);
+        history.addActionListener(this);
 
         Profile = new JButton("Profile");
         Profile.setBounds(770, 5, 100, 25);
@@ -59,25 +60,25 @@ public class MainUI extends Users implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == bookings){
+        if (e.getSource() == bookings) {
             dispose();
             new BookingUI();
-        }
-        else if (e.getSource() == back){
+        } else if (e.getSource() == back) {
             dispose();
             new Login();
-        }
-        else if (e.getSource() == query){
+        } else if (e.getSource() == query) {
             dispose();
             new QueriesUI();
-        }
-        else if (e.getSource() == Logout){
+        } else if (e.getSource() == Logout) {
             dispose();
             new Login();
-        }
-        else if (e.getSource() == Profile){
+        } else if (e.getSource() == Profile) {
             dispose();
             new ProfileUI();
+        } else if (e.getSource() == history) {
+            dispose();
+            new DequeUI();
         }
+
     }
 }

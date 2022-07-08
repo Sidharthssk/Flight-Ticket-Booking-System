@@ -185,7 +185,7 @@ class PQueueUI extends SortedPriorityQueue {
                 c.add(passenger);
 
                 flightno = new JLabel(current.data.flightNo, JLabel.LEFT);
-                flightno.setBounds(250, y, 10, 30);
+                flightno.setBounds(250, y, 100, 30);
                 flightno.setFont(new Font("Arial", Font.BOLD, 12));
                 c.add(flightno);
 

@@ -281,8 +281,8 @@ class ReturnUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if (e.getSource() == back) {
-            new MainUI();
             dispose();
+            new PaymentUI();
         }
         if (e.getSource() == cb_month) {
             selected_month = cb_month.getSelectedItem().toString();
@@ -306,8 +306,8 @@ class ReturnUI extends JFrame implements ActionListener {
             }
         }
         if (e.getSource() == cancel) {
-            new MainUI();
             dispose();
+            new PaymentUI();
         }
         if (e.getSource() == ok) {
             new Thread(new Runnable() {

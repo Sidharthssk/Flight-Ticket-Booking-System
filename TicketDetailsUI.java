@@ -18,6 +18,9 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
     static String selectedClass;
     static Users[] additional_users = new Users[Integer.parseInt(BookingUI.selected_number)];
 
+    static int total = 0;
+    static int soloTotal = 0;
+
     TicketDetailsUI() {
 
         setTitle("Ticket Details");
@@ -154,6 +157,11 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
             }
 
             if (eClass.isSelected()) {
+
+                soloTotal = FlightShowingUI.selectedFlight.economyclass_ticket_fare;
+                total = FlightShowingUI.selectedFlight.economyclass_ticket_fare * Integer.parseInt(BookingUI.selected_number);
+
+                selectedClass = "Economy Class";
                 int index = FlightDetails.flightlist.indexOf(FlightShowingUI.selectedFlight);
                 int front = FlightDetails.flightlist.get(index).front2;
                 int rear = FlightDetails.flightlist.get(index).rear2;
@@ -186,9 +194,15 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
                 dispose();
                 index = Users.usersList.indexOf(Users.currentUser);
                 Users.usersList.get(index).d.add(t);
+                new ReturnUI();
             }
 
             if (bClass.isSelected()) {
+
+                soloTotal = FlightShowingUI.selectedFlight.businessclass_ticket_fare;
+                total = FlightShowingUI.selectedFlight.businessclass_ticket_fare * Integer.parseInt(BookingUI.selected_number);
+
+                selectedClass = "Business Class";
                 int index = FlightDetails.flightlist.indexOf(FlightShowingUI.selectedFlight);
                 int front = FlightDetails.flightlist.get(index).front1;
                 int rear = FlightDetails.flightlist.get(index).rear1;
