@@ -9,7 +9,7 @@ public class PaymentUI extends JFrame implements ActionListener {
 
     JLabel payment, numLbl, nameLbl, ageLbl, genderLbl, priceLbl1, priceLbl2, usernumberLbl, usernameLbl, userageLbl, usergenderLbl,
             userpriceLbl1, userpriceLbl2, num, name, age, gender, price1, price2, total, totalSum;
-    JButton back, pay;
+    JButton pay,cancel;
     Container c;
 
     PaymentUI() {
@@ -21,11 +21,6 @@ public class PaymentUI extends JFrame implements ActionListener {
 
         c = getContentPane();
         c.setLayout(null);
-
-        back = new JButton("Back");
-        back.setBounds(5, 5, 70, 25);
-        c.add(back);
-        back.addActionListener(this);
 
         payment = new JLabel("Payment", JLabel.CENTER);
         payment.setBounds(350, 50, 300, 40);
@@ -142,15 +137,20 @@ public class PaymentUI extends JFrame implements ActionListener {
         }
 
         total = new JLabel("Total : Rs. " + Integer.toString(TicketDetailsUI.total + ReturnFlightShowingUI.total), JLabel.LEFT);
-        total.setBounds(400, y, 200, 30);
+        total.setBounds(500, y+50, 200, 30);
         total.setFont(new Font("Arial", Font.BOLD, 15));
         c.add(total);
 
         pay = new JButton("Pay");
-        pay.setBounds(450, y + 30, 75, 25);
+        pay.setBounds(500, y + 100, 75, 25);
         pay.setFont(new Font("Arial", Font.BOLD, 15));
         pay.addActionListener(this);
         c.add(pay);
+
+        cancel = new JButton("Cancel");
+        cancel.setBounds(400, y + 100, 75, 25);
+        cancel.setFont(new Font("Arial", Font.BOLD, 15));
+        cancel.addActionListener(this);
 
         setVisible(true);
 
@@ -162,11 +162,6 @@ public class PaymentUI extends JFrame implements ActionListener {
         if (e.getSource() == pay) {
             // show dialogue box saying payment successful
             JOptionPane.showMessageDialog(this, "Payment Successful");
-            dispose();
-            new MainUI();
-        }
-
-        if (e.getSource() == back) {
             dispose();
             new MainUI();
         }

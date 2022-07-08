@@ -11,7 +11,7 @@ class FlightShowingUI extends JFrame implements ActionListener {
 
     static FlightDetails selectedFlight = new FlightDetails();
 
-    static JLabel[][] labels = new JLabel[10][9];
+    static JLabel[][] labels = new JLabel[10][11];
     static JButton[] buttons = new JButton[10];
     JButton back;
     Container c;
@@ -22,8 +22,8 @@ class FlightShowingUI extends JFrame implements ActionListener {
 
     FlightShowingUI() {
         setTitle("Flight details");
-        setSize(1200, 600);
-        setLocation(200, 50);
+        setSize(1350, 600);
+        setLocationRelativeTo(null);
         c = getContentPane();
         c.setLayout(null);
 
@@ -61,37 +61,37 @@ class FlightShowingUI extends JFrame implements ActionListener {
             c.add(number);
 
             departure = new JLabel("Departure");
-            departure.setBounds(270, 75, 100, 30);
+            departure.setBounds(270, 75, 80, 30);
             departure.setFont(new Font("Arial", Font.BOLD, 13));
             c.add(departure);
 
             arrival = new JLabel("Arrival");
-            arrival.setBounds(380, 75, 100, 30);
+            arrival.setBounds(360, 75, 80, 30);
             arrival.setFont(new Font("Arial", Font.BOLD, 13));
             c.add(arrival);
 
             dep_time = new JLabel("Departure Time");
-            dep_time.setBounds(490, 75, 100, 30);
+            dep_time.setBounds(450, 75, 100, 30);
             dep_time.setFont(new Font("Arial", Font.BOLD, 13));
             c.add(dep_time);
 
             arr_time = new JLabel("Arrival Time");
-            arr_time.setBounds(600, 75, 100, 30);
+            arr_time.setBounds(560, 75, 100, 30);
             arr_time.setFont(new Font("Arial", Font.BOLD, 13));
             c.add(arr_time);
 
             duration = new JLabel("Duration");
-            duration.setBounds(710, 75, 100, 30);
+            duration.setBounds(670, 75, 100, 30);
             duration.setFont(new Font("Arial", Font.BOLD, 13));
             c.add(duration);
 
             e_price = new JLabel("Economy Price");
-            e_price.setBounds(820, 75, 100, 30);
+            e_price.setBounds(780, 75, 100, 30);
             e_price.setFont(new Font("Arial", Font.BOLD, 13));
             c.add(e_price);
 
             b_price = new JLabel("Business Price");
-            b_price.setBounds(930, 75, 100, 30);
+            b_price.setBounds(890, 75, 100, 30);
             b_price.setFont(new Font("Arial", Font.BOLD, 13));
             c.add(b_price);
 
@@ -113,29 +113,37 @@ class FlightShowingUI extends JFrame implements ActionListener {
                 c.add(labels[i][3]);
 
                 labels[i][4].setText(Integer.toString(flightDetails[i].departureTime) + ":00");
-                labels[i][4].setBounds(490, y_axis, 100, 30);
+                labels[i][4].setBounds(490, y_axis, 80, 30);
                 c.add(labels[i][4]);
 
                 labels[i][5].setText(Integer.toString(flightDetails[i].arrivalTime) + ":00");
-                labels[i][5].setBounds(600, y_axis, 100, 30);
+                labels[i][5].setBounds(580, y_axis, 80, 30);
                 c.add(labels[i][5]);
 
                 labels[i][6].setText(
                         Integer.toString(Math.abs(flightDetails[i].arrivalTime - flightDetails[i].departureTime))
                                 + ":00");
-                labels[i][6].setBounds(710, y_axis, 100, 30);
+                labels[i][6].setBounds(670, y_axis, 100, 30);
                 c.add(labels[i][6]);
 
                 labels[i][7].setText("Rs. " + Integer.toString(flightDetails[i].economyclass_ticket_fare));
-                labels[i][7].setBounds(820, y_axis, 100, 30);
+                labels[i][7].setBounds(780, y_axis, 100, 30);
                 c.add(labels[i][7]);
 
                 labels[i][8].setText("Rs. " + Integer.toString(flightDetails[i].businessclass_ticket_fare));
-                labels[i][8].setBounds(930, y_axis, 100, 30);
+                labels[i][8].setBounds(890, y_axis, 100, 30);
                 c.add(labels[i][8]);
 
+                labels[i][9].setText(Integer.toString(flightDetails[i].economyclass_seats));
+                labels[i][9].setBounds(1000, y_axis, 100, 30);
+                c.add(labels[i][9]);
+
+                labels[i][10].setText(Integer.toString(flightDetails[i].businessclass_seats));
+                labels[i][10].setBounds(1110, y_axis, 100, 30);
+                c.add(labels[i][10]);
+
                 buttons[i] = new JButton("Book");
-                buttons[i].setBounds(1040, y_axis, 100, 20);
+                buttons[i].setBounds(1220, y_axis, 100, 20);
                 c.add(buttons[i]);
                 buttons[i].addActionListener(this);
 
@@ -210,6 +218,11 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
             c.add(back);
             back.addActionListener(this);
         } else {
+
+            back = new JButton("Back");
+            back.setBounds(5, 5, 100, 30);
+            c.add(back);
+            back.addActionListener(this);
 
             name = new JLabel("Flight Name");
             name.setBounds(50, 75, 100, 30);
@@ -329,7 +342,7 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
                 int index = Users.usersList.indexOf(Users.currentUser);
                 Users.usersList.get(index).d.add(returnTicket);
 
-                if (TicketDetailsUI.selectedClass.equals("Economy")) {
+                if (TicketDetailsUI.selectedClass.equals("Economy Class")) {
 
                     soloTotal = ReturnFlightShowingUI.selectedFlight.economyclass_ticket_fare;
                     total = ReturnFlightShowingUI.selectedFlight.economyclass_ticket_fare
@@ -355,7 +368,7 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
                     }
                 }
 
-                if (TicketDetailsUI.selectedClass.equals("Business")) {
+                if (TicketDetailsUI.selectedClass.equals("Business Class")) {
 
                     soloTotal = ReturnFlightShowingUI.selectedFlight.businessclass_ticket_fare;
                     total = ReturnFlightShowingUI.selectedFlight.businessclass_ticket_fare
