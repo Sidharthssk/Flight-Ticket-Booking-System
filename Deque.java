@@ -56,19 +56,19 @@ class Deque extends JFrame implements ActionListener {
     }
 }
 
-class DequeUI extends Deque implements ActionListener{
+class DequeUI extends Deque implements ActionListener {
 
     JLabel history, empty, number, numberLbl, passLbl, flightnoLbl, fromLbl, toLbl, dateLbl, departureTimeLbl,
             arrivalTimeLbl, classLbl, durationLbl, pass, flightno, from, to, date, departureTime, arrivalTime, duration,
             sclass;
 
-    JButton back;
+    JButton back, cancel;
     Container c;
 
     DequeUI() {
 
         setTitle("Booking.com");
-        setSize(1100, 700);
+        setSize(1300, 700);
         setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -191,18 +191,19 @@ class DequeUI extends Deque implements ActionListener{
                 date.setFont(new Font("Arial", Font.BOLD, 13));
                 c.add(date);
 
-                departureTime = new JLabel(current.data.departure_time, JLabel.LEFT);
+                departureTime = new JLabel(current.data.departure_time + ":00", JLabel.LEFT);
                 departureTime.setBounds(650, y, 100, 30);
                 departureTime.setFont(new Font("Arial", Font.BOLD, 13));
                 c.add(departureTime);
 
-                arrivalTime = new JLabel(current.data.arrival_time, JLabel.LEFT);
+                arrivalTime = new JLabel(current.data.arrival_time + ":00", JLabel.LEFT);
                 arrivalTime.setBounds(750, y, 100, 30);
                 arrivalTime.setFont(new Font("Arial", Font.BOLD, 13));
                 c.add(arrivalTime);
 
                 duration = new JLabel(Integer.toString(
-                        Integer.parseInt(current.data.arrival_time) - Integer.parseInt(current.data.departure_time)),
+                        Integer.parseInt(current.data.arrival_time) - Integer.parseInt(current.data.departure_time))
+                        + ":00",
                         JLabel.LEFT);
                 duration.setBounds(850, y, 100, 30);
                 duration.setFont(new Font("Arial", Font.BOLD, 13));
@@ -218,6 +219,11 @@ class DequeUI extends Deque implements ActionListener{
                 y += 50;
 
             }
+
+            cancel = new JButton("Cancel");
+            cancel.setBounds(1100, 150, 100, 30);
+            cancel.setFont(new Font("Arial", Font.BOLD, 13));
+            c.add(cancel);
         }
 
         setVisible(true);
@@ -228,6 +234,18 @@ class DequeUI extends Deque implements ActionListener{
         if (e.getSource() == back) {
             dispose();
             new MainUI();
+        }
+        if (e.getSource() == cancel) {
+            // Users.usersList.get(index).d.add(t);
+            new Thread(new Runnable() {
+                public void run() {
+                    int index = Users.usersList.indexOf(Users.currentUser);
+                    Users.usersList.get(index).d.remove();
+                    dispose();
+                    new DequeUI();
+                }
+            }).start();
+
         }
 
     }

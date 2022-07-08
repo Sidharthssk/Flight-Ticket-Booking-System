@@ -96,12 +96,14 @@ class Login extends Users implements ActionListener {
                 ok.setBounds(170, 250, 60, 20);
                 c.add(ok);
                 ok.setVisible(true);
+                passkey.setVisible(false);
                 flag = 0;
             } else if (result1 == 1) {
                 successLabel.setText("User does not exist !!  Please Signup");
                 ok.setBounds(270, 250, 60, 20);
                 c.add(ok);
                 ok.setVisible(true);
+                passkey.setVisible(false);
                 tryAgain.setVisible(true);
 
                 flag = 1;
@@ -134,7 +136,7 @@ class Login extends Users implements ActionListener {
                 new SignUp();
             } else if (flag == -1) {
                 dispose();
-                new Login();
+                new WelcomeUI();
             } else if (flag == 2) {
                 String passcode = String.valueOf(passkey.getPassword());
                 if (passcode.equals("737")) {

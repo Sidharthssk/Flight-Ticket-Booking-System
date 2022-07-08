@@ -281,6 +281,8 @@ class ReturnUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if (e.getSource() == back) {
+            ReturnFlightShowingUI.total = 0;
+            ReturnFlightShowingUI.soloTotal = 0;
             dispose();
             new PaymentUI();
         }
@@ -306,6 +308,8 @@ class ReturnUI extends JFrame implements ActionListener {
             }
         }
         if (e.getSource() == cancel) {
+            ReturnFlightShowingUI.total = 0;
+            ReturnFlightShowingUI.soloTotal = 0;
             dispose();
             new PaymentUI();
         }

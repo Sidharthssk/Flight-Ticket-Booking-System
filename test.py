@@ -9,7 +9,6 @@ name_map = {"Air India": "AI", "Indigo": "IN", "Air Asia": "AS", "Fly Dubai": "F
 df = pd.DataFrame(columns=['Name', 'Flight no', 'Departure Airport', 'Destination Airport','Date',
         'Departure Time','Arival Time','Businessclass seats','Economyclass seats',
         'Economyclass ticket fare','Businessclass ticket fare'])
-print(df)
 for x in range(50000):
     name = names[random.randint(0, len(names) - 1)]
     flightNo = name_map[name]+str(random.randint(100,900))
