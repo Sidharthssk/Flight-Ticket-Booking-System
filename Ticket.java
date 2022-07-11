@@ -11,7 +11,6 @@ public class Ticket {
     String arrival_time;
     String class_type;
     String flightNo;
-
     static Users [] additional_users;
 
     Ticket(String name,String from,String to,LocalDate d,String departure_time,String arrival_time,String class_type,String flightNo, Users[] additional_users){

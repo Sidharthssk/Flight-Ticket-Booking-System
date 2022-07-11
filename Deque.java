@@ -223,6 +223,7 @@ class DequeUI extends Deque implements ActionListener {
             cancel = new JButton("Cancel");
             cancel.setBounds(1100, 150, 100, 30);
             cancel.setFont(new Font("Arial", Font.BOLD, 13));
+            cancel.addActionListener(this);
             c.add(cancel);
         }
 
@@ -240,7 +241,10 @@ class DequeUI extends Deque implements ActionListener {
             new Thread(new Runnable() {
                 public void run() {
                     int index = Users.usersList.indexOf(Users.currentUser);
+                    ChatBot.ticketQueue.remove(Users.usersList.get(index), Users.usersList.get(index).d.tail.data);
                     Users.usersList.get(index).d.remove();
+                    
+
                     dispose();
                     new DequeUI();
                 }

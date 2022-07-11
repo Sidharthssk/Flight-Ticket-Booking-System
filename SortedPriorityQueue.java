@@ -66,6 +66,30 @@ public class SortedPriorityQueue extends JFrame implements ActionListener {
         }
     }
 
+    void remove(Users user, Ticket t){
+        Node current = ChatBot.ticketQueue.head;
+        
+        int flag = 0;
+        if(current.data.passenger_name.equals(user.username) && current.data.equals(t)){
+            head = head.next;
+        }
+        else if(tail.data.passenger_name.equals(user.username) && tail.data.equals(t)){
+            while(current.next.next != null){
+                current = current.next;
+            }
+            current.next = null;
+        }
+        else{
+            while(current.next != null){
+                if(current.next.data.passenger_name.equals(user.username) && current.next.data.equals(t)){
+                    current.next = current.next.next;
+                    break;
+                }
+                current = current.next;
+            }
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
