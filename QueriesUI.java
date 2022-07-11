@@ -74,7 +74,7 @@ public class QueriesUI extends JFrame implements ActionListener {
             else{
                 success.setVisible(true);
                 ok.setVisible(true);
-                String queryText = Users.currentUser.username+"- "+query;
+                String queryText = Users.currentUser.username+" - "+query;
                 QueueUI.q.enqueue(queryText);
             }
         }

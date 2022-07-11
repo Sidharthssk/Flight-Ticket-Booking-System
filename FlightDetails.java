@@ -59,4 +59,60 @@ public class FlightDetails {
     static String[] destination = { "Dammam", "Riyadh", "Qatar", "Kuwait", "Dubai" };
     static String[] departure = { "Cochin", "Trivandrum", "Kozhikode", "Mumbai", "NewDelhi" };
 
+    void setfront1(int front){
+        this.front1 = front;
+    }
+
+    void setfront2(int front){
+        this.front2 = front;
+    }
+
+    void setrear1(int rear){
+        this.rear1 = rear;
+    }
+
+    void setrear2(int rear){
+        this.rear2 = rear;
+    }
+
+    void addEconomyTicket(Ticket t, int pos){
+        this.economyTickets[pos] = t;
+    }
+
+    void addBuisinessTicket(Ticket t, int pos){
+        this.businessTickets[pos] = t;
+    }
+
+    int getFront1(){
+        return this.front1;
+    }
+
+    int getRear1(){
+        return this.rear1;
+    }
+
+    int getFront2(){
+        return this.front2;
+    }
+
+    int getRear2(){
+        return this.rear2;
+    }
+
+    int getSize1(){
+        return this.businessclass_seats;
+    }
+
+    int getSize2(){
+        return this.economyclass_seats;
+    }
+
+    int getEconomySeats(){
+        return this.economyclass_seats;
+    }
+
+    int getBusinessSeats(){
+        return this.businessclass_seats;
+    }
+
 }

@@ -163,9 +163,9 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
 
                 selectedClass = "Economy Class";
                 int index = FlightDetails.flightlist.indexOf(FlightShowingUI.selectedFlight);
-                int front = FlightDetails.flightlist.get(index).front2;
-                int rear = FlightDetails.flightlist.get(index).rear2;
-                int size = FlightDetails.flightlist.get(index).economyclass_seats;
+                int front = FlightDetails.flightlist.get(index).getFront2();
+                int rear = FlightDetails.flightlist.get(index).getRear2();
+                int size = FlightDetails.flightlist.get(index).getEconomySeats();
 
                 if ((rear + 1) % size == front) {
                     JOptionPane.showMessageDialog(null, "No seats available");
@@ -177,17 +177,22 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
                         Integer.toString(FlightShowingUI.selectedFlight.arrivalTime), "Economy Class",
                         FlightShowingUI.selectedFlight.flightNo,
                         additional_users);
-                if (front == -1 && rear == -1) {
-                    front = rear = 0;
-                    FlightDetails.flightlist.get(index).economyTickets[rear] = t;
-                    FlightDetails.flightlist.get(index).front2 = front;
-                    FlightDetails.flightlist.get(index).rear2 = rear;
-
-                } else {
-                    rear = (rear + 1) % size;
-                    FlightDetails.flightlist.get(index).economyTickets[rear] = t;
-                    FlightDetails.flightlist.get(index).rear2 = rear;
-
+                for(int i = 0;i < Integer.parseInt(BookingUI.selected_number);i++){
+                    
+                    front = FlightDetails.flightlist.get(index).getFront2();
+                    rear = FlightDetails.flightlist.get(index).getRear2();
+                    size = FlightDetails.flightlist.get(index).getEconomySeats();
+                    if (front == -1 && rear == -1) {
+                        front = rear = 0;
+                        FlightDetails.flightlist.get(index).addEconomyTicket(t, rear);
+                        FlightDetails.flightlist.get(index).setfront2(front);
+                        FlightDetails.flightlist.get(index).setrear2(rear);
+    
+                    } else {
+                        rear = (rear + 1) % size;
+                        FlightDetails.flightlist.get(index).addEconomyTicket(t, rear);
+                        FlightDetails.flightlist.get(index).setrear2(rear);
+                    }
                 }
                 ticketQueue.add(BookingUI.selectedDate(), t);
                 JOptionPane.showMessageDialog(null, "Ticket booked successfully");
@@ -204,9 +209,9 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
 
                 selectedClass = "Business Class";
                 int index = FlightDetails.flightlist.indexOf(FlightShowingUI.selectedFlight);
-                int front = FlightDetails.flightlist.get(index).front1;
-                int rear = FlightDetails.flightlist.get(index).rear1;
-                int size = FlightDetails.flightlist.get(index).businessclass_seats;
+                int front = FlightDetails.flightlist.get(index).getFront1();
+                int rear = FlightDetails.flightlist.get(index).getRear1();
+                int size = FlightDetails.flightlist.get(index).getBusinessSeats();
 
                 if ((rear + 1) % size == front) {
                     JOptionPane.showMessageDialog(null, "No seats available");
@@ -217,15 +222,20 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
                         Integer.toString(FlightShowingUI.selectedFlight.arrivalTime), "Business Class",
                         FlightShowingUI.selectedFlight.flightNo,
                         additional_users);
-                if (front == -1 && rear == -1) {
-                    front = rear = 0;
-                    FlightDetails.flightlist.get(index).businessTickets[rear] = t;
-                    FlightDetails.flightlist.get(index).front1 = front;
-                    FlightDetails.flightlist.get(index).rear1 = rear;
-                } else {
-                    rear = (rear + 1) % size;
-                    FlightDetails.flightlist.get(index).businessTickets[rear] = t;
-                    FlightDetails.flightlist.get(index).rear1 = rear;
+                for(int i = 0;i<Integer.parseInt(BookingUI.selected_number);i++){
+                    front = FlightDetails.flightlist.get(index).getFront1();
+                    rear = FlightDetails.flightlist.get(index).getRear1();
+                    size = FlightDetails.flightlist.get(index).getBusinessSeats();
+                    if (front == -1 && rear == -1) {
+                        front = rear = 0;
+                        FlightDetails.flightlist.get(index).addBuisinessTicket(t, rear);
+                        FlightDetails.flightlist.get(index).setfront1(front);;
+                        FlightDetails.flightlist.get(index).setrear1(rear);
+                    } else {
+                        rear = (rear + 1) % size;
+                        FlightDetails.flightlist.get(index).addBuisinessTicket(t, rear);
+                        FlightDetails.flightlist.get(index).setrear1(rear);
+                    }
                 }
                 ticketQueue.add(BookingUI.selectedDate(), t);
                 JOptionPane.showMessageDialog(null, "Ticket booked successfully");

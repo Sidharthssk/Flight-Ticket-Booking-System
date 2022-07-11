@@ -1,7 +1,5 @@
 import java.time.LocalDate;
 import javax.swing.*;
-import javax.swing.border.Border;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -36,13 +34,13 @@ public class SortedPriorityQueue extends JFrame implements ActionListener {
             size++;
         } else {
             Node currentNode = head;
-            Node TicketListUI = head;
+            Node temp = head;
             int flag = 0;
             while (currentNode != tail) {
-                currentNode = TicketListUI;
-                TicketListUI = TicketListUI.next;
-                if (TicketListUI != null && TicketListUI.priority.isAfter(newNode.priority)) {
-                    newNode.next = TicketListUI;
+                currentNode = temp;
+                temp = temp.next;
+                if (temp != null && temp.priority.isAfter(newNode.priority)) {
+                    newNode.next = temp;
                     currentNode.next = newNode;
                     size++;
                     flag = 1;

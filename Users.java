@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -69,6 +68,7 @@ class Users extends JFrame implements Serializable{
                     if (tempUser.username.equals(user.username)) {
                         flag = 1;
                         currentUser = tempUser;
+                        break;
                     }
                 }
                 if (flag == 0) {
@@ -83,12 +83,12 @@ class Users extends JFrame implements Serializable{
                 }
 
             case 2:
-                try(ObjectOutputStream obj = new ObjectOutputStream(new FileOutputStream(new File("users.txt"),true))){
-                    obj.writeObject(user);
-                }
-                catch(IOException e){
-                    e.printStackTrace();
-                }
+                // try(ObjectOutputStream obj = new ObjectOutputStream(new FileOutputStream(new File("users.txt"),true))){
+                //     obj.writeObject(user);
+                // }
+                // catch(IOException e){
+                //     e.printStackTrace();
+                // }
                 usersList.add(user);
                 return 0;
         }

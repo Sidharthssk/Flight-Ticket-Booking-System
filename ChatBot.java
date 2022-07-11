@@ -53,6 +53,8 @@ public class ChatBot extends Users {
             FlightShowingUI.labels[i][6] = new JLabel("");
             FlightShowingUI.labels[i][7] = new JLabel("");
             FlightShowingUI.labels[i][8] = new JLabel("");
+            FlightShowingUI.labels[i][9] = new JLabel("");
+            FlightShowingUI.labels[i][10] = new JLabel("");
             FlightShowingUI.buttons[i] = new JButton("");
             ReturnFlightShowingUI.labels[i][0] = new JLabel("");
             ReturnFlightShowingUI.labels[i][1] = new JLabel("");
@@ -63,10 +65,10 @@ public class ChatBot extends Users {
             ReturnFlightShowingUI.labels[i][6] = new JLabel("");
             ReturnFlightShowingUI.labels[i][7] = new JLabel("");
             ReturnFlightShowingUI.labels[i][8] = new JLabel("");
+            ReturnFlightShowingUI.labels[i][9] = new JLabel("");
+            ReturnFlightShowingUI.labels[i][10] = new JLabel("");
             ReturnFlightShowingUI.buttons[i] = new JButton("");
         }
         new WelcomeUI();
-        //new QueriesUI();
-        //new PQueueUI();
     }
 }

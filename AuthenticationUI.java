@@ -296,12 +296,7 @@ class SignUp extends Users implements ActionListener {
                 ageField.getText(),
                 countryField.getText());
 
-        int result = authentication(2, users);
-        if (result == 0) {
-            success_lbl.setText("Registration Successfull !!");
-        } else {
-            success_lbl.setText("Registration Failed !!");
-        }
+        authentication(2, users);
 
         if (e.getSource() == submit) {
             success_lbl.setText("Registration Successfull !!");
