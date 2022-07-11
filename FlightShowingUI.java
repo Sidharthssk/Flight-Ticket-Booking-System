@@ -306,42 +306,42 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
             c.add(departure);
 
             arrival = new JLabel("Arrival");
-            arrival.setBounds(380, 75, 100, 30);
+            arrival.setBounds(360, 75, 100, 30);
             arrival.setFont(new Font(font1, Font.BOLD, 13));
             c.add(arrival);
 
             dep_time = new JLabel("Departure Time");
-            dep_time.setBounds(490, 75, 100, 30);
+            dep_time.setBounds(470, 75, 100, 30);
             dep_time.setFont(new Font(font1, Font.BOLD, 13));
             c.add(dep_time);
 
             arr_time = new JLabel("Arrival Time");
-            arr_time.setBounds(600, 75, 100, 30);
+            arr_time.setBounds(580, 75, 100, 30);
             arr_time.setFont(new Font(font1, Font.BOLD, 13));
             c.add(arr_time);
 
             duration = new JLabel("Duration");
-            duration.setBounds(670, 75, 100, 30);
+            duration.setBounds(690, 75, 100, 30);
             duration.setFont(new Font(font1, Font.BOLD, 13));
             c.add(duration);
 
             e_price = new JLabel("Economy Price");
-            e_price.setBounds(780, 75, 100, 30);
+            e_price.setBounds(800, 75, 100, 30);
             e_price.setFont(new Font(font1, Font.BOLD, 13));
             c.add(e_price);
 
             b_price = new JLabel("Business Price");
-            b_price.setBounds(890, 75, 100, 30);
+            b_price.setBounds(910, 75, 100, 30);
             b_price.setFont(new Font(font1, Font.BOLD, 13));
             c.add(b_price);
 
             b_seats = new JLabel("Business Seats");
-            b_seats.setBounds(1000, 75, 100, 30);
+            b_seats.setBounds(1020, 75, 100, 30);
             b_seats.setFont(new Font(font1, Font.BOLD, 13));
             c.add(b_seats);
 
             e_seats = new JLabel("Economy Seats");
-            e_seats.setBounds(1150, 75, 100, 30);
+            e_seats.setBounds(1130, 75, 100, 30);
             e_seats.setFont(new Font(font1, Font.BOLD, 13));
             c.add(e_seats);
 
@@ -365,33 +365,33 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
                 c.add(labels[i][1]);
 
                 labels[i][2].setText(flightDetails[i].departure_airport);
-                labels[i][2].setBounds(270, y_axis, 100, 30);
+                labels[i][2].setBounds(270, y_axis, 80, 30);
                 c.add(labels[i][2]);
 
                 labels[i][3].setText(flightDetails[i].arrival_airport);
-                labels[i][3].setBounds(380, y_axis, 100, 30);
+                labels[i][3].setBounds(360, y_axis, 100, 30);
                 c.add(labels[i][3]);
 
                 labels[i][4].setText(Integer.toString(flightDetails[i].departureTime) + ":00");
-                labels[i][4].setBounds(490, y_axis, 80, 30);
+                labels[i][4].setBounds(470, y_axis, 100, 30);
                 c.add(labels[i][4]);
 
                 labels[i][5].setText(Integer.toString(flightDetails[i].arrivalTime) + ":00");
-                labels[i][5].setBounds(580, y_axis, 80, 30);
+                labels[i][5].setBounds(580, y_axis, 100, 30);
                 c.add(labels[i][5]);
 
                 labels[i][6].setText(
                         Integer.toString(Math.abs(flightDetails[i].arrivalTime - flightDetails[i].departureTime))
                                 + ":00");
-                labels[i][6].setBounds(670, y_axis, 100, 30);
+                labels[i][6].setBounds(690, y_axis, 100, 30);
                 c.add(labels[i][6]);
 
                 labels[i][7].setText("Rs. " + Integer.toString(flightDetails[i].economyclass_ticket_fare));
-                labels[i][7].setBounds(780, y_axis, 100, 30);
+                labels[i][7].setBounds(800, y_axis, 100, 30);
                 c.add(labels[i][7]);
 
                 labels[i][8].setText("Rs. " + Integer.toString(flightDetails[i].businessclass_ticket_fare));
-                labels[i][8].setBounds(890, y_axis, 100, 30);
+                labels[i][8].setBounds(910, y_axis, 100, 30);
                 c.add(labels[i][8]);
 
                 int size = 0;
@@ -416,7 +416,7 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
                 }
 
                 labels[i][9].setText(Integer.toString(size1 - size));
-                labels[i][9].setBounds(1000, y_axis, 100, 30);
+                labels[i][9].setBounds(1020, y_axis, 100, 30);
                 c.add(labels[i][9]);
 
                 size = 0;
@@ -440,11 +440,11 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
                 }
 
                 labels[i][10].setText(Integer.toString(size2 - size));
-                labels[i][10].setBounds(1110, y_axis, 100, 30);
+                labels[i][10].setBounds(1130, y_axis, 100, 30);
                 c.add(labels[i][10]);
 
                 buttons[i] = new JButton("Book");
-                buttons[i].setBounds(1220, y_axis, 100, 20);
+                buttons[i].setBounds(1240, y_axis, 100, 20);
                 c.add(buttons[i]);
                 buttons[i].addActionListener(this);
 

@@ -77,14 +77,14 @@ public class SortedPriorityQueue extends JFrame implements ActionListener {
 class PQueueUI extends SortedPriorityQueue {
 
     JLabel empty, number, number_lbl, passenger_lbl,flightno_lbl, from_lbl, to_lbl, date_lbl, departure_time_lbl, arrival_time_lbl,
-            class_type_lbl, duration_lbl, passenger, flightno, from, to, date, departure_time, arrival_time, class_type, duration;
+            class_type_lbl, duration_lbl, passenger, flightno, from, to, date, departure_time, arrival_time, class_type, duration, no_lbl, no_of_tickets;
     JButton back, recent;
     Container c;
 
     PQueueUI() {
 
         setTitle("Booking.com");
-        setSize(1100, 700);
+        setSize(1200, 700);
         setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -97,7 +97,7 @@ class PQueueUI extends SortedPriorityQueue {
         back.addActionListener(this);
 
         recent = new JButton("Active Tickets");
-        recent.setBounds(950, 5, 130, 25);
+        recent.setBounds(1050, 5, 130, 25);
         c.add(recent);
         recent.addActionListener(this);
 
@@ -150,6 +150,11 @@ class PQueueUI extends SortedPriorityQueue {
         class_type_lbl.setBounds(950, 50, 50, 30);
         class_type_lbl.setFont(new Font("Arial", Font.BOLD, 13));
         c.add(class_type_lbl);
+
+        no_lbl = new JLabel("No. of tickets", JLabel.LEFT);
+        no_lbl.setBounds(1050, 50, 100, 30);
+        no_lbl.setFont(new Font("Arial", Font.BOLD, 13));
+        c.add(no_lbl);
 
         int y = 100;
         Node current = ChatBot.ticketQueue.head;
@@ -224,6 +229,11 @@ class PQueueUI extends SortedPriorityQueue {
                 class_type.setFont(new Font("Arial", Font.BOLD, 12));
                 c.add(class_type);
 
+                no_of_tickets = new JLabel(Integer.toString(current.data.additional_users.length), JLabel.CENTER);
+                no_of_tickets.setBounds(1050, y, 100, 30);
+                no_of_tickets.setFont(new Font("Arial", Font.BOLD, 12));
+                c.add(no_of_tickets);
+                
                 y += 35;
                 current = current.next;
                 no++;
