@@ -12,7 +12,7 @@ class WelcomeUI extends JFrame implements ActionListener {
 
     WelcomeUI() {
 
-        setTitle("Booking.com");
+        setTitle("Ace Travel");
         setSize(1000, 600);
         setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -20,7 +20,7 @@ class WelcomeUI extends JFrame implements ActionListener {
         c = getContentPane();
         c.setLayout(null);
 
-        Welcome_msg = new JLabel("Welcome to Booking.com", JLabel.CENTER);
+        Welcome_msg = new JLabel("Welcome to Ace Travels", JLabel.CENTER);
         Welcome_msg.setBounds(30, 50, 940, 40);
         Welcome_msg.setFont(new Font("Arial", Font.BOLD, 30));
         Border border = BorderFactory.createLineBorder(Color.BLACK, 1);

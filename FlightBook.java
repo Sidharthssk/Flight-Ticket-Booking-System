@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 
-public class ChatBot extends Users {
+public class FlightBook extends Users {
 
     static SortedPriorityQueue ticketQueue;
 

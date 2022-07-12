@@ -12,7 +12,7 @@ public class MainUI extends Users implements ActionListener {
 
     MainUI() {
 
-        setTitle("Booking.com");
+        setTitle("Ace Travels");
         setSize(1000, 600);
         setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

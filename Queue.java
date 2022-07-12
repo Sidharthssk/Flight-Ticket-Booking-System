@@ -66,7 +66,7 @@ class QueueUI extends Queue {
 
     QueueUI() {
 
-        setTitle("Booking.com");
+        setTitle("Queries");
         setSize(1000, 700);
         setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

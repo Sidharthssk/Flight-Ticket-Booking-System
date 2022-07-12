@@ -15,7 +15,7 @@ public class QueriesUI extends JFrame implements ActionListener {
 
     QueriesUI(){
             
-            setTitle("Booking.com");
+            setTitle("Query");
             setSize(1000, 700);
             setLocation(200, 50);
             setDefaultCloseOperation(EXIT_ON_CLOSE);

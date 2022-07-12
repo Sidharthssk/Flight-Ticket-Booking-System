@@ -67,7 +67,7 @@ class DequeUI extends Deque implements ActionListener {
 
     DequeUI() {
 
-        setTitle("Booking.com");
+        setTitle("History");
         setSize(1300, 700);
         setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -241,9 +241,47 @@ class DequeUI extends Deque implements ActionListener {
             new Thread(new Runnable() {
                 public void run() {
                     int index = Users.usersList.indexOf(Users.currentUser);
-                    ChatBot.ticketQueue.remove(Users.usersList.get(index), Users.usersList.get(index).d.tail.data);
+                    Ticket t = Users.usersList.get(index).d.tail.data;
+                    FlightDetails selectedFlight = t.flight;
+                    int flightIndex = FlightDetails.flightlist.indexOf(selectedFlight);
+                    FlightBook.ticketQueue.remove(Users.usersList.get(index), t);
                     Users.usersList.get(index).d.remove();
-                    
+
+                    // if(t.class_type.equals("Economy Class")){
+                    //     for(int i=0;i<t.additional_users.length;i++){
+                    //         int front = FlightDetails.flightlist.get(flightIndex).getFront2();
+                    //         int rear = FlightDetails.flightlist.get(flightIndex).getRear2();
+                    //         int size = FlightDetails.flightlist.get(flightIndex).getEconomySeats();
+                    //         if(front == rear){
+                    //             FlightDetails.flightlist.get(flightIndex).setfront2(-1);
+                    //             FlightDetails.flightlist.get(flightIndex).setrear2(-1);
+                    //         }
+                    //         else if(front == size-1){
+                    //             front = 0;
+                    //             FlightDetails.flightlist.get(flightIndex).setfront2(front);
+                    //         }
+                    //         else{
+                    //             front++;
+                    //             FlightDetails.flightlist.get(flightIndex).setfront2(front);
+                    //         }
+                    //     }
+                    // }
+
+                    // else if(t.class_type.equals("Business Class")){
+                    //     for(int i=0;i<t.additional_users.length;i++){
+                    //         int front = FlightDetails.flightlist.get(flightIndex).getFront1();
+                    //         int rear = FlightDetails.flightlist.get(flightIndex).getRear1();
+                    //         int size = FlightDetails.flightlist.get(flightIndex).getBusinessSeats();
+                    //         if((front+1)%size == rear){
+                    //             FlightDetails.flightlist.get(flightIndex).setfront1(-1);
+                    //             FlightDetails.flightlist.get(flightIndex).setrear1(-1);
+                    //         }
+                    //         else{
+                    //             front = (front+1)%size;
+                    //             FlightDetails.flightlist.get(flightIndex).setfront1(front);
+                    //         }
+                    //     }
+                    // }
 
                     dispose();
                     new DequeUI();

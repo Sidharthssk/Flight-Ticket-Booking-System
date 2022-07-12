@@ -11,7 +11,7 @@ public class AdminUI extends JFrame implements ActionListener {
 
     AdminUI() {
 
-        setTitle("Booking.com");
+        setTitle("Ace Travel");
         setSize(1000, 600);
         setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

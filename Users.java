@@ -107,7 +107,7 @@ class ProfileUI extends JFrame implements ActionListener {
 
     ProfileUI(){
 
-        setTitle("Booking.com");
+        setTitle("Profile");
         setSize(1000, 600);
         setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

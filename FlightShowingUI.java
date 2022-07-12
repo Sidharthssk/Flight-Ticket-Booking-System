@@ -472,9 +472,10 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
                         ReturnUI.selected_dest, ReturnUI.selectedDate(),
                         Integer.toString(ReturnFlightShowingUI.selectedFlight.departureTime),
                         Integer.toString(ReturnFlightShowingUI.selectedFlight.arrivalTime),
-                        TicketDetailsUI.selectedClass, selectedFlight.flightNo, TicketDetailsUI.additional_users);
+                        TicketDetailsUI.selectedClass, selectedFlight.flightNo, selectedFlight,
+                        TicketDetailsUI.additional_users);
 
-                ChatBot.ticketQueue.add(ReturnUI.selectedDate(), returnTicket);
+                FlightBook.ticketQueue.add(ReturnUI.selectedDate(), returnTicket);
                 index = Users.usersList.indexOf(Users.currentUser);
                 Users.usersList.get(index).d.add(returnTicket);
 
@@ -485,23 +486,28 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
                             * Integer.parseInt(BookingUI.selected_number);
 
                     index = FlightDetails.returnflights.indexOf(selectedFlight);
-                    int front = FlightDetails.returnflights.get(index).getFront2();
-                    int rear = FlightDetails.returnflights.get(index).getRear2();
-                    int size = FlightDetails.returnflights.get(index).getEconomySeats();
 
-                    if ((rear + 1) % size == front) {
-                        JOptionPane.showMessageDialog(null, "No seats available");
-                        return;
-                    }
-                    if (front == -1 && rear == -1) {
-                        front = rear = 0;
-                        FlightDetails.returnflights.get(index).addEconomyTicket(returnTicket, rear);
-                        FlightDetails.returnflights.get(index).setfront2(front);
-                        FlightDetails.returnflights.get(index).setrear2(rear);
-                    } else {
-                        rear = (rear + 1) % size;
-                        FlightDetails.returnflights.get(index).addEconomyTicket(returnTicket, rear);
-                        FlightDetails.returnflights.get(index).setrear2(rear);
+                    for (int j = 0; j < Integer.parseInt(BookingUI.selected_number); j++) {
+
+                        int front = FlightDetails.returnflights.get(index).getFront2();
+                        int rear = FlightDetails.returnflights.get(index).getRear2();
+                        int size = FlightDetails.returnflights.get(index).getEconomySeats();
+
+                        if ((rear + 1) % size == front) {
+                            JOptionPane.showMessageDialog(null, "No seats available");
+                            return;
+                        }
+                        if (front == -1 && rear == -1) {
+                            front = rear = 0;
+                            FlightDetails.returnflights.get(index).addEconomyTicket(returnTicket, rear);
+                            FlightDetails.returnflights.get(index).setfront2(front);
+                            FlightDetails.returnflights.get(index).setrear2(rear);
+                        } else {
+                            rear = (rear + 1) % size;
+                            FlightDetails.returnflights.get(index).addEconomyTicket(returnTicket, rear);
+                            FlightDetails.returnflights.get(index).setrear2(rear);
+                        }
+
                     }
 
                     dispose();
@@ -515,23 +521,25 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
                             * Integer.parseInt(BookingUI.selected_number);
 
                     index = FlightDetails.returnflights.indexOf(FlightShowingUI.selectedFlight);
-                    int front = FlightDetails.returnflights.get(index).getFront1();
-                    int rear = FlightDetails.returnflights.get(index).getRear1();
-                    int size = FlightDetails.returnflights.get(index).getBusinessSeats();
 
-                    if ((rear + 1) % size == front) {
-                        JOptionPane.showMessageDialog(null, "No seats available");
-                        return;
-                    }
-                    if (front == -1 && rear == -1) {
-                        front = rear = 0;
-                        FlightDetails.returnflights.get(index).addBuisinessTicket(returnTicket, rear);
-                        FlightDetails.returnflights.get(index).setfront1(front);
-                        FlightDetails.returnflights.get(index).setrear1(rear);
-                    } else {
-                        rear = (rear + 1) % size;
-                        FlightDetails.returnflights.get(index).addBuisinessTicket(returnTicket, rear);
-                        FlightDetails.returnflights.get(index).setrear1(rear);
+                    for (int j = 0; j < Integer.parseInt(BookingUI.selected_number); j++) {
+                        int front = FlightDetails.returnflights.get(index).getFront1();
+                        int rear = FlightDetails.returnflights.get(index).getRear1();
+                        int size = FlightDetails.returnflights.get(index).getBusinessSeats();
+                        if ((rear + 1) % size == front) {
+                            JOptionPane.showMessageDialog(null, "No seats available");
+                            return;
+                        }
+                        if (front == -1 && rear == -1) {
+                            front = rear = 0;
+                            FlightDetails.returnflights.get(index).addBuisinessTicket(returnTicket, rear);
+                            FlightDetails.returnflights.get(index).setfront1(front);
+                            FlightDetails.returnflights.get(index).setrear1(rear);
+                        } else {
+                            rear = (rear + 1) % size;
+                            FlightDetails.returnflights.get(index).addBuisinessTicket(returnTicket, rear);
+                            FlightDetails.returnflights.get(index).setrear1(rear);
+                        }
                     }
 
                     dispose();

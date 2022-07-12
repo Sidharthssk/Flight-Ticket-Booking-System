@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class TicketDetailsUI extends ChatBot implements ActionListener {
+class TicketDetailsUI extends FlightBook implements ActionListener {
 
     Container c;
     JButton back, cancel, confirm;
@@ -175,7 +175,7 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
                 Ticket t = new Ticket(Users.currentUser.username, BookingUI.selected_depart, BookingUI.selected_dest,
                         BookingUI.selectedDate(), Integer.toString(FlightShowingUI.selectedFlight.departureTime),
                         Integer.toString(FlightShowingUI.selectedFlight.arrivalTime), "Economy Class",
-                        FlightShowingUI.selectedFlight.flightNo,
+                        FlightShowingUI.selectedFlight.flightNo, FlightShowingUI.selectedFlight,
                         additional_users);
                 for(int i = 0;i < Integer.parseInt(BookingUI.selected_number);i++){
                     
@@ -220,7 +220,7 @@ class TicketDetailsUI extends ChatBot implements ActionListener {
                 Ticket t = new Ticket(Users.currentUser.username, BookingUI.selected_depart, BookingUI.selected_dest,
                         BookingUI.selectedDate(), Integer.toString(FlightShowingUI.selectedFlight.departureTime),
                         Integer.toString(FlightShowingUI.selectedFlight.arrivalTime), "Business Class",
-                        FlightShowingUI.selectedFlight.flightNo,
+                        FlightShowingUI.selectedFlight.flightNo, FlightShowingUI.selectedFlight,
                         additional_users);
                 for(int i = 0;i<Integer.parseInt(BookingUI.selected_number);i++){
                     front = FlightDetails.flightlist.get(index).getFront1();

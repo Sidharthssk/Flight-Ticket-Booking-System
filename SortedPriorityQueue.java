@@ -56,7 +56,7 @@ public class SortedPriorityQueue extends JFrame implements ActionListener {
     }
 
     void remove() {
-        Node current = ChatBot.ticketQueue.head;
+        Node current = FlightBook.ticketQueue.head;
         while (current != null) {
             if (LocalDate.now().isAfter(current.priority)) {
                 head = current.next;
@@ -67,7 +67,7 @@ public class SortedPriorityQueue extends JFrame implements ActionListener {
     }
 
     void remove(Users user, Ticket t){
-        Node current = ChatBot.ticketQueue.head;
+        Node current = FlightBook.ticketQueue.head;
         
         int flag = 0;
         if(current.data.passenger_name.equals(user.username) && current.data.equals(t)){
@@ -107,7 +107,7 @@ class PQueueUI extends SortedPriorityQueue {
 
     PQueueUI() {
 
-        setTitle("Booking.com");
+        setTitle("All Tickets");
         setSize(1200, 700);
         setLocation(200, 50);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -181,7 +181,7 @@ class PQueueUI extends SortedPriorityQueue {
         c.add(no_lbl);
 
         int y = 100;
-        Node current = ChatBot.ticketQueue.head;
+        Node current = FlightBook.ticketQueue.head;
         int no = 1;
 
         if (current == null) {
@@ -276,7 +276,7 @@ class PQueueUI extends SortedPriorityQueue {
         if (e.getSource() == recent) {
             new Thread(new Runnable() {
                 public void run() {
-                    ChatBot.ticketQueue.remove();
+                    FlightBook.ticketQueue.remove();
                     dispose();
                     new PQueueUI();
                 }
