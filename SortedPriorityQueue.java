@@ -199,6 +199,7 @@ class PQueueUI extends SortedPriorityQueue {
             arrival_time_lbl.setVisible(false);
             duration_lbl.setVisible(false);
             class_type_lbl.setVisible(false);
+            no_of_tickets.setVisible(false);
         } else {
             while (current != null) {
                 number = new JLabel(Integer.toString(no) + ".", JLabel.LEFT);
@@ -242,7 +243,7 @@ class PQueueUI extends SortedPriorityQueue {
                 c.add(arrival_time);
 
                 duration = new JLabel(Integer.toString(
-                        Integer.parseInt(current.data.arrival_time) - Integer.parseInt(current.data.departure_time))+":00",
+                        Math.abs(Integer.parseInt(current.data.arrival_time) - Integer.parseInt(current.data.departure_time)))+":00",
                         JLabel.LEFT);
                 duration.setBounds(850, y, 100, 30);
                 duration.setFont(new Font("Arial", Font.BOLD, 12));
