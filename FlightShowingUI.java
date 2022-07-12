@@ -520,7 +520,7 @@ class ReturnFlightShowingUI extends JFrame implements ActionListener {
                     total = ReturnFlightShowingUI.selectedFlight.businessclass_ticket_fare
                             * Integer.parseInt(BookingUI.selected_number);
 
-                    index = FlightDetails.returnflights.indexOf(FlightShowingUI.selectedFlight);
+                    index = FlightDetails.returnflights.indexOf(selectedFlight);
 
                     for (int j = 0; j < Integer.parseInt(BookingUI.selected_number); j++) {
                         int front = FlightDetails.returnflights.get(index).getFront1();
